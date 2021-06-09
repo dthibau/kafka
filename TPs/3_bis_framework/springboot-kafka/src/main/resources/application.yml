@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    stream:
+      bindings:
+# A compléter
+  kafka:
+    producer:
+      acks: all
+    consumer:
+      auto-offset-reset: earliest
+    bootstrap-servers: localhost:9092,

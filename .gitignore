@@ -1,4 +1,9 @@
 .metadata/
+.classpath
+.project
+**/target/*
+**/.settings/
+*.odt
 *.odp
 *#
 **/bin/

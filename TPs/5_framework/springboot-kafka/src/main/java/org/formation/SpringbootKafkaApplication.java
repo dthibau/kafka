@@ -21,4 +21,9 @@ public class SpringbootKafkaApplication {
 	}
 
 
+	@Bean
+	Consumer<Message<String>> position() {
+		return message -> logger.info(message.getPayload() + " received from partition "
+				+ message.getHeaders().get(KafkaHeaders.RECEIVED_PARTITION_ID));
+	}
 }

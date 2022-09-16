@@ -2,6 +2,8 @@ spring:
   cloud:
     stream:
       bindings:
+        position-in-0:
+          destination: position
 # A compléter
   kafka:
     producer:

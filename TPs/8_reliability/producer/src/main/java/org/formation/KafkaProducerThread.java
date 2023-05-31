@@ -7,7 +7,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.formation.model.AckMode;
 import org.formation.model.Courier;
 import org.formation.model.Position;
 import org.formation.model.SendMode;
@@ -18,12 +17,12 @@ public class KafkaProducerThread implements Runnable {
 	KafkaProducer<String,Courier> producer;
 	private long nbMessages,sleep;
 	private SendMode sendMode;
-	private AckMode ackMode;
+	private String ackMode;
 	private ProducerCallback callback = new ProducerCallback();
 	
 	private Courier courier;
 	
-	public KafkaProducerThread(String id, long nbMessages, long sleep, SendMode sendMode, AckMode ackMode) {
+	public KafkaProducerThread(String id, long nbMessages, long sleep, SendMode sendMode, String ackMode) {
 		this.nbMessages = nbMessages;
 		this.sleep = sleep;
 		this.sendMode = sendMode;
@@ -37,15 +36,7 @@ public class KafkaProducerThread implements Runnable {
 	@Override
 	public void run() {
 		
-		producer.initTransactions();
-		
-		producer.beginTransaction();
-
-		
 		for (int i =0; i< nbMessages; i++) {
-			
-
-			
 			
 			ProducerRecord<String, Courier> producerRecord = new ProducerRecord<String, Courier>(TOPIC, courier.getId(), courier);
 			switch (sendMode) {
@@ -75,20 +66,7 @@ public class KafkaProducerThread implements Runnable {
 			} catch (InterruptedException e) {
 				System.err.println("INTERRUPTED");
 			}
-			System.out.println("Send " + courier.getId()+"/"+i);
-			
-			if ( i%50 == 0 ) {
-				if ( i%100 == 0 ) {
-					System.out.println("============ Committed ============" );
-					producer.commitTransaction();
-					producer.beginTransaction();
-				} else {
-					System.out.println("============= Aborted ===============");
-
-					producer.abortTransaction();
-					producer.beginTransaction();
-				}
-			}
+			courier.move();
 		}
 		
 	}
@@ -96,14 +74,14 @@ public class KafkaProducerThread implements Runnable {
 	public void fireAndForget(ProducerRecord<String,Courier> record) {
 		
 		producer.send(record);
-//		System.out.println("FireAndForget  - " + record);
+		System.out.println("FireAndForget  - " + record);
 
 		
 	}
 	
 	public void synchronous(ProducerRecord<String,Courier> record) throws InterruptedException, ExecutionException {
 		RecordMetadata metaData = producer.send(record).get();
-//		System.out.println("Synchronous  - " + metaData);
+		System.out.println("Synchronous  - " + metaData);
 		
 	}
 	public void asynchronous(ProducerRecord<String,Courier> record) {
@@ -112,21 +90,15 @@ public class KafkaProducerThread implements Runnable {
 	
 	private void _initProducer() {
 		Properties kafkaProps = new Properties();
-		kafkaProps.put("bootstrap.servers",
-		"localhost:9192,localhost:9193");
-		kafkaProps.put("key.serializer",
-		"org.apache.kafka.common.serialization.StringSerializer");
-		kafkaProps.put("value.serializer",
-		"org.formation.model.JsonSerializer");
-		kafkaProps.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "tx-position-"+courier.getId());
-		if ( this.ackMode == AckMode.ALL )
-			kafkaProps.put(ProducerConfig.ACKS_CONFIG, "all");
-		
-		kafkaProps.put("security.protocol", "SSL");
-		kafkaProps.put("ssl.truststore.location", "/home/dthibau/Formations/Kafka/MyWork/ssl/client.truststore.jks");
-		kafkaProps.put("ssl.truststore.password","secret");
-		kafkaProps.put("ssl.endpoint.identification.algorithm","");
+		kafkaProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
+		KafkaProducerApplication.props.get(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG));
+		kafkaProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG,
+				KafkaProducerApplication.props.get(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG));
+		kafkaProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG,
+				KafkaProducerApplication.props.get(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG));
+		kafkaProps.put(ProducerConfig.ACKS_CONFIG,
+				ackMode);
+
 		producer = new KafkaProducer<String, Courier>(kafkaProps);
-		
 	}
 }

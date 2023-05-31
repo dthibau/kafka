@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author dthibau
+ *
+ */
+module checklogs {
+}

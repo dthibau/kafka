@@ -22,11 +22,13 @@ public class KafkaConsumerThread implements Runnable, ConsumerRebalanceListener 
 	KafkaConsumer<String, Courier> consumer;
 	private long sleep;
 	private String id;
+	private String groupId;
 	
 	
 
-	public KafkaConsumerThread(String id, long sleep) {
+	public KafkaConsumerThread(String id, String groupId, long sleep) {
 		this.id = id;
+		this.groupId = groupId;
 		this.sleep = sleep;
 
 		_initConsumer();
@@ -49,7 +51,7 @@ public class KafkaConsumerThread implements Runnable, ConsumerRebalanceListener 
 						updatedCount = updateMap.get(record.key()) + 1;
 					}
 					updateMap.put(record.key(), updatedCount);
-					System.out.println("Consommer " + id + " updateMap:" + updateMap);
+//					System.out.println("Consommer " + id + " updateMap:" + updateMap);
 				}
 //				consumer.commitSync();
 			}
@@ -61,13 +63,12 @@ public class KafkaConsumerThread implements Runnable, ConsumerRebalanceListener 
 
 	private void _initConsumer() {
 		Properties kafkaProps = new Properties();
-		kafkaProps.put("bootstrap.servers", "localhost:9092,localhost:9093");
-		kafkaProps.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-		kafkaProps.put("value.deserializer", "org.formation.model.JsonDeserializer");
-		kafkaProps.put("group.id", "position-consumer-2");
+		kafkaProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KafkaConsumerApplication.props.get(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG));
+		kafkaProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, KafkaConsumerApplication.props.get(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG));
+		kafkaProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaConsumerApplication.props.get(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG));
+		kafkaProps.put(ConsumerConfig.GROUP_ID_CONFIG, groupId);
 		kafkaProps.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, true);
-		kafkaProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-		kafkaProps.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG,"read_uncommitted");
+		kafkaProps.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, KafkaConsumerApplication.props.get(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG));
 
 		consumer = new KafkaConsumer<String, Courier>(kafkaProps);
 		consumer.subscribe(Collections.singletonList(TOPIC),this);

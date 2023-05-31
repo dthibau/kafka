@@ -1,23 +1,28 @@
 package org.formation;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Properties;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-import org.formation.model.AckMode;
 import org.formation.model.SendMode;
 
 public class KafkaProducerApplication {
+	
+	static Properties props;
 
-	public static void main(String[] args) throws URISyntaxException {
+	public static void main(String[] args) throws URISyntaxException, IOException {
 
+		props = new Properties();
+		props.load(KafkaProducerApplication.class.getClassLoader().getResourceAsStream("producer.properties"));
+		
 		int nbThreads = 0;
 		long nbMessages = 0;
 		int sleep = 1000;
+		String ackMode = "0";
 		SendMode sendMode = SendMode.FIRE_AND_FORGET;
-		AckMode ackMode =  AckMode.ZER0;
-;
 
 		try {
 			nbThreads = Integer.parseInt(args[0]);
@@ -31,12 +36,10 @@ public class KafkaProducerApplication {
 			} else {
 				sendMode = SendMode.ASYNCHRONOUS;
 			}
-			if (args[4].equalsIgnoreCase("all") ) {
-				ackMode = AckMode.ALL;
-			} 
-
+			ackMode = args[4];
+			
 		} catch (Exception e) {
-			System.err.println("Usage is <run> <nbThreads> <nbMessages> <sleep> <0|1|2> <0|all>");
+			System.err.println("Usage is <run> <nbThreads> <nbMessages> <sleep> <0|1|2> <0|1|all>");
 			System.exit(1);
 		}
 
@@ -52,11 +55,11 @@ public class KafkaProducerApplication {
 		executorService.shutdown();
 
 		try {
-			System.out.println(executorService.awaitTermination(2, TimeUnit.MINUTES));
+			System.out.println(executorService.awaitTermination(nbMessages*sleep + 1000, TimeUnit.MILLISECONDS));
 		} catch (InterruptedException e) {
 			System.err.println("INTERRUPTED");
 		}
-		System.out.println("Execution in "+ (System.currentTimeMillis()-top) + "ms");
+		System.out.println("Produced " + nbThreads*nbMessages + " messages in "+ (System.currentTimeMillis()-top) + "ms");
 		System.exit(0);
 	}
 

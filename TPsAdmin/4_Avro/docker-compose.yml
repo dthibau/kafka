@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+  redpanda-console:
+    # build:
+    #   context: .
+    image: docker.redpanda.com/redpandadata/console:latest
+    environment:
+      KAFKA_BROKERS: localhost:9092
+      KAFKA_SCHEMAREGISTRY_ENABLED: 'true'
+      KAFKA_SCHEMAREGISTRY_URLS: http://localhost:8085
+    ports:
+      - 8080:8080
+    network_mode: host
+
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    ports:
+      - "8085:8085"
+    restart: unless-stopped
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9192'
+      SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
+      SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
+      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+    network_mode: host
+
+

@@ -55,7 +55,6 @@ services:
     # build:
     #   context: .
     image: tchiotludo/akhq
-    restart: unless-stopped
     command: |
       java -Xmx512m -Xms512m 
            -Dfile.encoding=UTF-8 -Djava.awt.headless=true 

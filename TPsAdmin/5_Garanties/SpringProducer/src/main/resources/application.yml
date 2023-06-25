@@ -1,0 +1,13 @@
+spring:
+  main:
+    web-application-type: none
+  kafka:
+    producer:
+      bootstrap-servers:
+      - localhost:9092
+      - localhost:9192
+      - localhost:9292
+      key-serializer:
+        org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:
+        org.formation.model.JsonSerializer 

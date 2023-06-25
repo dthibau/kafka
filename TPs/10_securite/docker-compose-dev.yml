@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  kafka:
+    image: docker.io/bitnami/kafka:3.4
+    ports:
+      - "9092:9092"
+      - "9192:9192"
+    volumes:
+      - "kafka_data:/bitnami"
+      - '/home/dthibau/Formations/Kafka/github/solutions/ssl-bitnami/keystore/kafka.keystore.jks:/bitnami/kafka/config/certs/kafka.keystore.jks:ro'
+      - '/home/dthibau/Formations/Kafka/github/solutions/ssl-bitnami/truststore/kafka.truststore.jks:/bitnami/kafka/config/certs/kafka.truststore.jks:ro'
+      - '/home/dthibau/Formations/Kafka/github/solutions/ssl-client:/client'
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=no
+      - BITNAMI_DEBUG=true
+      - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_TLS_TYPE=JKS # or PEM
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,SSL://:9192
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092,SSL://localhost:9192
+
+
+volumes:
+  kafka_data:
+    driver: local

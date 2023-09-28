@@ -9,15 +9,11 @@ services:
       KAFKA_BROKERS: localhost:9092
       KAFKA_SCHEMAREGISTRY_ENABLED: 'true'
       KAFKA_SCHEMAREGISTRY_URLS: http://localhost:8085
-    ports:
-      - 8080:8080
     network_mode: host
 
 
   schema-registry:
     image: confluentinc/cp-schema-registry
-    ports:
-      - "8085:8085"
     restart: unless-stopped
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9192'

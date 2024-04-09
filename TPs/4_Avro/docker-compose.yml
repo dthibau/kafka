@@ -8,6 +8,8 @@ services:
       - "19092:19092"
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_NODE_ID=0
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
@@ -24,6 +26,8 @@ services:
       - "19093:19093"
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_NODE_ID=1
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
@@ -41,6 +45,8 @@ services:
       - "19094:19094"
     environment:
       - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
       - KAFKA_CFG_NODE_ID=2
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv

@@ -103,6 +103,8 @@ services:
   redpanda:
     image : docker.redpanda.com/redpandadata/console:latest
     container_name: kafka-redpanda
+    ports:
+      - "9090:8080"
     environment:
       - KAFKA_BROKERS=kafka-0:9092,kafka-1:9092,kafka-2:9092
       - KAFKA_SCHEMAREGISTRY_ENABLED=true

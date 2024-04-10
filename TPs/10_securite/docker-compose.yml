@@ -4,22 +4,32 @@ services:
   kafka-0:
     image: docker.io/bitnami/kafka:3.4
     ports:
-      - "9092"
       - "19092:19092"
     environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19094,SSL://:49092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-0:9092,EXTERNAL://localhost:19094,SSL://localhost:49092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT,SSL:SSL
-      - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19092,SSL://:9095
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-0:9092,EXTERNAL://localhost:19092,SSL://kafka-0:9095
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:SSL,PLAINTEXT:PLAINTEXT,SSL:SSL
+      - KAFKA_CFG_SSL_KEYSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.keystore.jks
+      - KAFKA_CFG_SSL_KEYSTORE_PASSWORD=secret
+      - KAFKA_CFG_SSL_KEY_PASSWORD=secret
+      - KAFKA_CFG_SSL_TRUSTSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.truststore.jks
+      - KAFKA_CFG_SSL_TRUSTSTORE_PASSWORD=secret
+#      - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_CFG_SSL_CLIENT_AUTH=none
+      # - KAFKA_TLS_CLIENT_AUTH=none
       - KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=
-      - KAFKA_INTER_BROKER_LISTENER_NAME=SSL
     volumes:
       - kafka_0_data:/bitnami/kafka
-      - '/home/dthibau/Formations/Kafka/github/solutions/ssl/server.keystore.jks:/opt/bitnami/kafka/config/certs/kafka.keystore.jks:ro'
-      - '/home/dthibau/Formations/Kafka/github/solutions/ssl/server.truststore.jks:/opt/bitnami/kafka/config/certs/kafka.truststore.jks:ro'
+      - /home/dthibau/Formations/SpringKafka/github/solutions/ssl/mount:/bitnami/kafka/config/certs/
+
+
     networks:
       - kafka-cluster
   kafka-1:
@@ -27,21 +37,29 @@ services:
     ports:
       - "19093:19093"
     environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19094,SSL://:49092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-1:9092,EXTERNAL://localhost:19094,SSL://localhost:49092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT,SSL:SSL
-      - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19093,SSL://:9195
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-1:9092,EXTERNAL://localhost:19093,SSL://kafka-1:9195
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:SSL,PLAINTEXT:PLAINTEXT,SSL:SSL
+      - KAFKA_CFG_SSL_KEYSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.keystore.jks
+      - KAFKA_CFG_SSL_KEYSTORE_PASSWORD=secret
+      - KAFKA_CFG_SSL_KEY_PASSWORD=secret
+      - KAFKA_CFG_SSL_TRUSTSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.truststore.jks
+      - KAFKA_CFG_SSL_TRUSTSTORE_PASSWORD=secret
+#      - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_CFG_SSL_CLIENT_AUTH=none
+      # - KAFKA_TLS_CLIENT_AUTH=none
       - KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=
-      - BITNAMI_DEBUG=true
-      - KAFKA_INTER_BROKER_LISTENER_NAME=SSL
+      - BITNAMI_DEBUG=yes
     volumes:
-      - '/home/dthibau/Formations/Kafka/MyWork/bitnami/config/:/bitnami/kafka/config/'
       - kafka_1_data:/bitnami/kafka
-      - '/home/dthibau/Formations/Kafka/github/solutions/ssl/server.keystore.jks:/opt/bitnami/kafka/config/certs/kafka.keystore.jks:ro'
-      - '/home/dthibau/Formations/Kafka/github/solutions/ssl/server.truststore.jks:/opt/bitnami/kafka/config/certs/kafka.truststore.jks:ro'
+      - /home/dthibau/Formations/SpringKafka/github/solutions/ssl/mount:/bitnami/kafka/config/certs/
     networks:
       - kafka-cluster
   kafka-2:
@@ -49,51 +67,53 @@ services:
     ports:
       - "19094:19094"
     environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_CFG_NODE_ID=2
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
       - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
       - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
-      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19094,SSL://:49092
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-2:9092,EXTERNAL://localhost:19094,SSL://localhost:49092
-      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT,SSL:SSL
-      - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19094,SSL://:9295
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-2:9092,EXTERNAL://localhost:19094,SSL://kafka-2:9295
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:SSL,PLAINTEXT:PLAINTEXT,SSL:SSL
+      - KAFKA_CFG_SSL_KEYSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.keystore.jks
+      - KAFKA_CFG_SSL_KEYSTORE_PASSWORD=secret
+      - KAFKA_CFG_SSL_KEY_PASSWORD=secret
+      - KAFKA_CFG_SSL_TRUSTSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.truststore.jks
+      - KAFKA_CFG_SSL_TRUSTSTORE_PASSWORD=secret
+      # - KAFKA_CERTIFICATE_PASSWORD=secret
+      - KAFKA_CFG_SSL_CLIENT_AUTH=none
+      # - KAFKA_TLS_CLIENT_AUTH=none
       - KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=
-      - KAFKA_INTER_BROKER_LISTENER_NAME=SSL
+      - BITNAMI_DEBUG=true
     volumes:
       - kafka_2_data:/bitnami/kafka
-      - '/home/dthibau/Formations/Kafka/github/solutions/ssl/server.keystore.jks:/opt/bitnami/kafka/config/certs/kafka.keystore.jks:ro'
-      - '/home/dthibau/Formations/Kafka/github/solutions/ssl/server.truststore.jks:/opt/bitnami/kafka/config/certs/kafka.truststore.jks:ro'
+      - /home/dthibau/Formations/SpringKafka/github/solutions/ssl/mount:/bitnami/kafka/config/certs/
+      - /home/dthibau/Formations/SpringKafka/MyWork/log4j.properties:/opt/bitnami/kafka/config/log4j.properties
     networks:
       - kafka-cluster
-  akhq:
-    # build:
-    #   context: .
-    image: tchiotludo/akhq
-    restart: unless-stopped
-    command: |
-      java -Xmx512m -Xms512m 
-           -Dfile.encoding=UTF-8 -Djava.awt.headless=true 
-           -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.log 
-           -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8686 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false 
-           -jar /app/akhq.jar
-    environment:
-      AKHQ_CONFIGURATION: |
-        akhq:
-          connections:
-            docker-kafka-server:
-              properties:
-                bootstrap.servers: "kafka-0:9092,kafka-1:9092,kafka-2:9092"
-              schema-registry:
-                url: "http://schema-registry:8085"
 
-    ports:
-      - 8080:8080
+  redpanda:
+    image : docker.redpanda.com/redpandadata/console:latest
+    ports: 
+      - 9090:8080
+    environment:
+      - KAFKA_BROKERS=kafka-0:9092,kafka-1:9092,kafka-2:9092
+      - KAFKA_SCHEMAREGISTRY_ENABLED=true
+      - KAFKA_SCHEMAREGISTRY_URLS=http://schema-registry:8085
+    depends_on:
+      - kafka-0
+      - kafka-1
+      - kafka-2
+      - schema-registry
     networks:
       - kafka-cluster
 
   schema-registry:
     image: confluentinc/cp-schema-registry
     ports:
-      - "8081:8085"
+      - "9091:8085"
     restart: unless-stopped
     depends_on:
       - kafka-0
@@ -106,7 +126,7 @@ services:
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
     networks:
       - kafka-cluster
-
+            
 volumes:
   kafka_0_data:
     driver: local

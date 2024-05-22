@@ -1,14 +1,19 @@
 package org.formation;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.KafkaTemplate;
 
 @SpringBootApplication
@@ -52,4 +57,10 @@ public class SpringProducerApplication implements CommandLineRunner {
 		
 	}
 
+	@Bean
+	NewTopic positionTopic() {
+		Map<String, String> props = new HashMap<>();
+		props.put("min.insync.replicas", "2");
+		return TopicBuilder.name("position").partitions(5).replicas(3).configs(props).build();
+	}
 }

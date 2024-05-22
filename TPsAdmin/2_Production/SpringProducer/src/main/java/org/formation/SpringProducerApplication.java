@@ -5,6 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,7 +16,9 @@ public class SpringProducerApplication implements CommandLineRunner {
 
 	@Autowired
 	private KafkaTemplate<Object, Object> template;
-	
+
+	@Value("${async:true}")
+	boolean async;
 	static int nbThreads = 100;
 	
 	public static void main(String[] args) {
@@ -24,7 +27,7 @@ public class SpringProducerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Config is " + template.getProducerFactory().getConfigurationProperties());
+		System.out.println("Config is : async=" + async + " " + template.getProducerFactory().getConfigurationProperties());
 		
 		System.in.read();
 		ExecutorService executorService = Executors.newFixedThreadPool(nbThreads);
@@ -32,7 +35,7 @@ public class SpringProducerApplication implements CommandLineRunner {
 		long top = System.currentTimeMillis();
 
 		for (int i = 0; i < nbThreads; i++) {
-			Runnable r = new KafkaProducerThread("" + i, template);
+			Runnable r = new KafkaProducerThread("" + i, template,async);
 			Thread.sleep(100);
 			executorService.execute(r);
 		}

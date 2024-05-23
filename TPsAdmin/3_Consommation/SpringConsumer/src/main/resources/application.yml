@@ -1,6 +1,10 @@
 spring:
   main:
     web-application-type: none
+  datasource:
+    url: jdbc:postgresql:consumer
+    username: postgres
+    password: postgres
   kafka:
     consumer:
       group-id: consumer
@@ -12,11 +16,14 @@ spring:
       value-deserializer: org.formation.model.JsonDeserializer
         
     listener:
-      concurrency: 3 
+      concurrency: 3
 
-      
-      
-      
+
+
+
+  jpa:
+    hibernate:
+      ddl-auto: update
 #logging:
 #  file:
 #    name: consume.log

@@ -1,0 +1,17 @@
+
+E
+java:S3740"/Provide the parametrized type for this generic.(ÞðŽÁ
+Š
+java:S1130"tRemove the declaration of thrown exception 'java.net.URISyntaxException', as it cannot be thrown from method's body.(‰§¤Ú
+@	java:S106"+Replace this use of System.err by a logger.(“‡„ô
+H
+java:S6881,"2Use virtual threads for heavy blocking operations.(¬Æ„°
+P
+java:S1161&":Add the "@Override" annotation above this method signature(“–ýþ
+@	java:S106'"+Replace this use of System.out by a logger.(»”¾Ñ
+t
+java:S2142-"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+t
+java:S21427"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€
+E	java:S1068"+Replace this use of System.err by a logger.(ù‚µˆøÿÿÿÿ
+@	java:S106:"+Replace this use of System.out by a logger.(Å—‘¨

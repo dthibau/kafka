@@ -37,7 +37,7 @@
 					<!-- MainClass in mainfest make a executable jar -->
 					<archive>
 						<manifest>
-							<mainClass>org.formation.KafkaProducerApplication</mainClass>
+							<mainClass>org.formation.KafkaConsumerApplication</mainClass>
 						</manifest>
 					</archive>
 

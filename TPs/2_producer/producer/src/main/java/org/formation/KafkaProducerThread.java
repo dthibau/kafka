@@ -9,8 +9,12 @@ import org.apache.kafka.clients.producer.RecordMetadata;
 import org.formation.model.Courier;
 import org.formation.model.Position;
 import org.formation.model.SendMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class KafkaProducerThread implements Runnable {
+
+	private static final Logger logger = LoggerFactory.getLogger(KafkaProducerThread.class);
 
 	public static String TOPIC ="position";
 	private long nbMessages,sleep;

@@ -1,7 +1,7 @@
 
 services:
   kafka-0:
-    image: docker.io/bitnami/kafka:3.4
+    image: docker.io/bitnami/kafka:3.7
     container_name: kafka-0
     ports:
       - "9092"
@@ -21,7 +21,7 @@ services:
     networks:
       - kafka-cluster
   kafka-1:
-    image: docker.io/bitnami/kafka:3.4
+    image: docker.io/bitnami/kafka:3.7
     container_name: kafka-1
     ports:
       - "19093:19093"
@@ -41,7 +41,7 @@ services:
     networks:
       - kafka-cluster
   kafka-2:
-    image: docker.io/bitnami/kafka:3.4
+    image: docker.io/bitnami/kafka:3.7
     container_name: kafka-2
     ports:
       - "19094:19094"

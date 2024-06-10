@@ -1,0 +1,133 @@
+services:
+  kafka-0:
+    image: docker.io/bitnami/kafka:3.4
+    ports:
+      - "19092:19092"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19092
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-0:9092,EXTERNAL://localhost:19092
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:SSL,PLAINTEXT:PLAINTEXT,SSL:SSL
+      - KAFKA_CFG_SSL_KEYSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.keystore.jks
+      - KAFKA_CFG_SSL_KEYSTORE_PASSWORD=secret
+      - KAFKA_CFG_SSL_KEY_PASSWORD=secret
+      - KAFKA_CFG_SSL_TRUSTSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.truststore.jks
+      - KAFKA_CFG_SSL_TRUSTSTORE_PASSWORD=secret
+#      - KAFKA_CERTIFICATE_PASSWORD=secret
+      # - KAFKA_CFG_SSL_CLIENT_AUTH=requested
+      - KAFKA_TLS_CLIENT_AUTH=requested
+      - KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=
+    volumes:
+      - kafka_0_data:/bitnami/kafka
+      - /home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount:/bitnami/kafka/config/certs/
+    networks:
+      - kafka-cluster
+  kafka-1:
+    image: docker.io/bitnami/kafka:3.4
+    ports:
+      - "19093:19093"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_NODE_ID=1
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19093
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-1:9092,EXTERNAL://localhost:19093
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:SSL,PLAINTEXT:PLAINTEXT,SSL:SSL
+      - KAFKA_CFG_SSL_KEYSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.keystore.jks
+      - KAFKA_CFG_SSL_KEYSTORE_PASSWORD=secret
+      - KAFKA_CFG_SSL_KEY_PASSWORD=secret
+      - KAFKA_CFG_SSL_TRUSTSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.truststore.jks
+      - KAFKA_CFG_SSL_TRUSTSTORE_PASSWORD=secret
+#      - KAFKA_CERTIFICATE_PASSWORD=secret
+      # - KAFKA_CFG_SSL_CLIENT_AUTH=requested
+      - KAFKA_TLS_CLIENT_AUTH=requested
+      - KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=
+      - BITNAMI_DEBUG=yes
+    volumes:
+      - kafka_1_data:/bitnami/kafka
+      - /home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount:/bitnami/kafka/config/certs/
+    networks:
+      - kafka-cluster
+  kafka-2:
+    image: docker.io/bitnami/kafka:3.4
+    ports:
+      - "19094:19094"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_NODE_ID=2
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19094
+      - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-2:9092,EXTERNAL://localhost:19094
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:SSL,PLAINTEXT:PLAINTEXT,SSL:SSL
+      - KAFKA_CFG_SSL_KEYSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.keystore.jks
+      - KAFKA_CFG_SSL_KEYSTORE_PASSWORD=secret
+      - KAFKA_CFG_SSL_KEY_PASSWORD=secret
+      - KAFKA_CFG_SSL_TRUSTSTORE_LOCATION=/bitnami/kafka/config/certs/kafka.truststore.jks
+      - KAFKA_CFG_SSL_TRUSTSTORE_PASSWORD=secret
+      # - KAFKA_CERTIFICATE_PASSWORD=secret
+      # - KAFKA_CFG_SSL_CLIENT_AUTH=requested
+      - KAFKA_TLS_CLIENT_AUTH=requested
+      - KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=
+      - BITNAMI_DEBUG=true
+    volumes:
+      - kafka_2_data:/bitnami/kafka
+      - /home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount:/bitnami/kafka/config/certs/
+    networks:
+      - kafka-cluster
+
+  redpanda:
+    image : docker.redpanda.com/redpandadata/console:latest
+    ports: 
+      - 9090:8080
+    environment:
+      - KAFKA_BROKERS=kafka-0:9092,kafka-1:9092,kafka-2:9092
+      - KAFKA_SCHEMAREGISTRY_ENABLED=true
+      - KAFKA_SCHEMAREGISTRY_URLS=http://schema-registry:8085
+    depends_on:
+      - kafka-0
+      - kafka-1
+      - kafka-2
+      - schema-registry
+    networks:
+      - kafka-cluster
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    ports:
+      - "9091:8085"
+    restart: unless-stopped
+    depends_on:
+      - kafka-0
+      - kafka-1
+      - kafka-2
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://kafka-0:9092,PLAINTEXT://kafka-1:9092'
+      SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
+      SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
+      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+    networks:
+      - kafka-cluster
+            
+volumes:
+  kafka_0_data:
+    driver: local
+  kafka_1_data:
+    driver: local
+  kafka_2_data:
+    driver: local
+networks:
+  kafka-cluster:

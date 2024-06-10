@@ -1,0 +1,186 @@
+2024-05-27 18:56:41,240 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2024-05-27 18:56:41,324 INFO o.a.j.JMeter: Loading user properties from: /home/dthibau/.sdkman/candidates/jmeter/5.6/bin/user.properties
+2024-05-27 18:56:41,329 INFO o.a.j.JMeter: Loading system properties from: /home/dthibau/.sdkman/candidates/jmeter/5.6/bin/system.properties
+2024-05-27 18:56:41,357 INFO o.a.j.JMeter: Copyright (c) 1998-2023 The Apache Software Foundation
+2024-05-27 18:56:41,358 INFO o.a.j.JMeter: Version 5.6
+2024-05-27 18:56:41,358 INFO o.a.j.JMeter: java.version=14.0.2
+2024-05-27 18:56:41,359 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2024-05-27 18:56:41,359 INFO o.a.j.JMeter: os.name=Linux
+2024-05-27 18:56:41,359 INFO o.a.j.JMeter: os.arch=amd64
+2024-05-27 18:56:41,360 INFO o.a.j.JMeter: os.version=6.5.0-35-generic
+2024-05-27 18:56:41,360 INFO o.a.j.JMeter: file.encoding=UTF-8
+2024-05-27 18:56:41,361 INFO o.a.j.JMeter: java.awt.headless=null
+2024-05-27 18:56:41,362 INFO o.a.j.JMeter: Max memory     =1073741824
+2024-05-27 18:56:41,362 INFO o.a.j.JMeter: Available Processors =8
+2024-05-27 18:56:41,398 INFO o.a.j.JMeter: Default Locale=English (EN)
+2024-05-27 18:56:41,400 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2024-05-27 18:56:41,400 INFO o.a.j.JMeter: JMeterHome=/home/dthibau/.sdkman/candidates/jmeter/5.6
+2024-05-27 18:56:41,401 INFO o.a.j.JMeter: user.dir  =/home/dthibau/Formations/Kafka/github/slides/TPsAdmin/1_MiseEnPlace/1.3_UI
+2024-05-27 18:56:41,401 INFO o.a.j.JMeter: PWD       =/home/dthibau/Formations/Kafka/github/slides/TPsAdmin/1_MiseEnPlace/1.3_UI
+2024-05-27 18:56:41,402 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: dthibau-XPS-13-7390 FullName: dthibau-XPS-13-7390
+2024-05-27 18:56:41,460 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2024-05-27 18:56:42,016 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: laf:javax.swing.plaf.metal.MetalLookAndFeel
+2024-05-27 18:57:04,082 INFO o.a.j.s.FileServer: Default base='/home/dthibau/Formations/Kafka/github/slides/TPsAdmin/1_MiseEnPlace/1.3_UI'
+2024-05-27 18:57:04,092 INFO o.a.j.g.a.Load: Loading file: /home/dthibau/Formations/SpringReactive/github/slides/TPS/3_WebFlux/FunctionalEndpoints.jmx
+2024-05-27 18:57:04,093 INFO o.a.j.s.FileServer: Set new base='/home/dthibau/Formations/SpringReactive/github/slides/TPS/3_WebFlux'
+2024-05-27 18:57:04,417 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2024-05-27 18:57:04,442 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2024-05-27 18:57:04,444 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2024-05-27 18:57:04,446 INFO o.a.j.s.SaveService: Loading file: /home/dthibau/Formations/SpringReactive/github/slides/TPS/3_WebFlux/FunctionalEndpoints.jmx
+2024-05-27 18:57:04,489 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-05-27 18:57:04,489 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-05-27 18:57:04,489 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-05-27 18:57:04,489 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2024-05-27 18:57:04,489 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2024-05-27 18:57:04,489 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2024-05-27 18:57:04,705 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2024-05-27 18:57:04,705 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2024-05-27 18:57:04,705 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2024-05-27 18:57:04,705 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2024-05-27 18:57:04,991 ERROR o.a.j.v.ViewResultsFullVisualizer: Exception registering implementation: [org.apache.jmeter.visualizers.RenderInBrowser] of interface: [interface org.apache.jmeter.visualizers.ResultRenderer], a jar is probably missing
+java.util.ServiceConfigurationError: org.apache.jmeter.visualizers.ResultRenderer: org.apache.jmeter.visualizers.RenderInBrowser Unable to get public no-arg constructor
+	at java.util.ServiceLoader.fail(ServiceLoader.java:584) ~[?:?]
+	at java.util.ServiceLoader.getConstructor(ServiceLoader.java:675) ~[?:?]
+	at java.util.ServiceLoader$LazyClassPathLookupIterator.hasNextService(ServiceLoader.java:1234) ~[?:?]
+	at java.util.ServiceLoader$LazyClassPathLookupIterator.hasNext(ServiceLoader.java:1266) ~[?:?]
+	at java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1301) ~[?:?]
+	at java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1386) ~[?:?]
+	at org.apache.jorphan.reflect.ClassFinder.loadServices(ClassFinder.java:115) ~[jorphan.jar:5.6]
+	at org.apache.jmeter.util.JMeterUtils.loadServicesAndScanJars(JMeterUtils.java:345) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createComboRender(ViewResultsFullVisualizer.java:464) ~[ApacheJMeter_components.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createLeftPanel(ViewResultsFullVisualizer.java:438) ~[ApacheJMeter_components.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.init(ViewResultsFullVisualizer.java:349) ~[ApacheJMeter_components.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.<init>(ViewResultsFullVisualizer.java:156) ~[ApacheJMeter_components.jar:5.6]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:?]
+	at jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:481) ~[?:?]
+	at org.apache.jmeter.gui.GuiPackage.getGuiFromCache(GuiPackage.java:424) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.GuiPackage.getGui(GuiPackage.java:267) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.GuiPackage.getGui(GuiPackage.java:238) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addComponent(JMeterTreeModel.java:160) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addSubTree(JMeterTreeModel.java:131) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addSubTree(JMeterTreeModel.java:131) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addSubTree(JMeterTreeModel.java:123) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.GuiPackage.addSubTree(GuiPackage.java:555) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.insertLoadedTree(Load.java:201) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.loadProjectFile(Load.java:132) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.loadProjectFile(Load.java:103) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.doActionAfterCheck(Load.java:90) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.AbstractActionWithNoRunningTest.doAction(AbstractActionWithNoRunningTest.java:44) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.ActionRouter.performAction(ActionRouter.java:83) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.ActionRouter.lambda$actionPerformed$0(ActionRouter.java:65) ~[ApacheJMeter_core.jar:5.6]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:316) ~[?:?]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:770) ~[?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:721) ~[?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:715) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:391) [?:?]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:85) [?:?]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:740) [?:?]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:?]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:90) [?:?]
+Caused by: java.lang.NoClassDefFoundError: javafx/embed/swing/JFXPanel
+	at java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:3215) ~[?:?]
+	at java.lang.Class.getConstructor0(Class.java:3420) ~[?:?]
+	at java.lang.Class.getConstructor(Class.java:2165) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:662) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:659) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:554) [?:?]
+	at java.util.ServiceLoader.getConstructor(ServiceLoader.java:670) ~[?:?]
+	... 43 more
+Caused by: java.lang.ClassNotFoundException: javafx.embed.swing.JFXPanel
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:435) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:589) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:522) ~[?:?]
+	at java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:3215) ~[?:?]
+	at java.lang.Class.getConstructor0(Class.java:3420) ~[?:?]
+	at java.lang.Class.getConstructor(Class.java:2165) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:662) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:659) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:554) ~[?:?]
+	at java.util.ServiceLoader.getConstructor(ServiceLoader.java:670) ~[?:?]
+	... 43 more
+2024-05-27 18:57:05,137 INFO o.a.j.s.FileServer: Set new base='/home/dthibau/Formations/SpringReactive/github/slides/TPS/3_WebFlux'
+2024-05-27 18:57:13,679 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2024-05-27 18:57:13,680 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-05-27 18:57:13,681 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-05-27 18:57:13,682 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2024-05-27 18:57:13,682 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2024-05-27 18:57:13,969 INFO o.a.j.r.ResultCollector: Folder at /home/dthibau/Formations/Spring5/MyWork/workspace-sts4/functional-web-mongo was created
+2024-05-27 18:57:13,983 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2024-05-27 18:57:14,023 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : TestWeb
+2024-05-27 18:57:14,023 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group TestWeb.
+2024-05-27 18:57:14,023 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2024-05-27 18:57:14,023 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2024-05-27 18:57:14,027 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2024-05-27 18:57:14,028 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2024-05-27 18:57:14,030 INFO o.a.j.t.JMeterThread: Thread started: TestWeb 1-1
+2024-05-27 18:57:14,050 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = dthibau-XPS-13-7390
+2024-05-27 18:57:14,063 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2024-05-27 18:57:14,778 INFO o.a.j.t.JMeterThread: Thread is done: TestWeb 1-1
+2024-05-27 18:57:14,779 INFO o.a.j.t.JMeterThread: Thread finished: TestWeb 1-1
+2024-05-27 18:57:14,780 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2024-05-27 18:57:14,781 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2024-05-27 19:01:37,315 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2024-05-27 19:01:37,317 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-05-27 19:01:37,328 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2024-05-27 19:01:37,438 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : TestWeb
+2024-05-27 19:01:37,439 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group TestWeb.
+2024-05-27 19:01:37,439 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2024-05-27 19:01:37,439 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2024-05-27 19:01:37,443 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2024-05-27 19:01:37,443 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2024-05-27 19:01:37,447 INFO o.a.j.t.JMeterThread: Thread started: TestWeb 1-1
+2024-05-27 19:01:38,038 INFO o.a.j.t.JMeterThread: Thread is done: TestWeb 1-1
+2024-05-27 19:01:38,038 INFO o.a.j.t.JMeterThread: Thread finished: TestWeb 1-1
+2024-05-27 19:01:38,039 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2024-05-27 19:01:38,039 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2024-05-27 19:05:09,706 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2024-05-27 19:05:09,709 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-05-27 19:05:09,719 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2024-05-27 19:05:09,825 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : TestWeb
+2024-05-27 19:05:09,825 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group TestWeb.
+2024-05-27 19:05:09,825 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2024-05-27 19:05:09,826 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2024-05-27 19:05:09,834 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2024-05-27 19:05:09,834 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2024-05-27 19:05:09,842 INFO o.a.j.t.JMeterThread: Thread started: TestWeb 1-1
+2024-05-27 19:05:10,597 INFO o.a.j.t.JMeterThread: Thread is done: TestWeb 1-1
+2024-05-27 19:05:10,598 INFO o.a.j.t.JMeterThread: Thread finished: TestWeb 1-1
+2024-05-27 19:05:10,598 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2024-05-27 19:05:10,599 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2024-05-27 19:37:53,035 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2024-05-27 19:37:53,035 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-05-27 19:37:53,037 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2024-05-27 19:37:53,080 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : TestWeb
+2024-05-27 19:37:53,080 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group TestWeb.
+2024-05-27 19:37:53,080 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2024-05-27 19:37:53,080 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2024-05-27 19:37:53,081 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2024-05-27 19:37:53,082 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2024-05-27 19:37:53,082 INFO o.a.j.t.JMeterThread: Thread started: TestWeb 1-1
+2024-05-27 19:37:53,099 INFO o.a.j.t.JMeterThread: Thread is done: TestWeb 1-1
+2024-05-27 19:37:53,099 INFO o.a.j.t.JMeterThread: Thread finished: TestWeb 1-1
+2024-05-27 19:37:53,099 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2024-05-27 19:37:53,100 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2024-05-27 19:38:03,357 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2024-05-27 19:38:03,359 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-05-27 19:38:03,368 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2024-05-27 19:38:03,520 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : TestWeb
+2024-05-27 19:38:03,521 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group TestWeb.
+2024-05-27 19:38:03,522 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2024-05-27 19:38:03,522 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=1 delayedStart=false
+2024-05-27 19:38:03,525 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2024-05-27 19:38:03,526 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2024-05-27 19:38:03,528 INFO o.a.j.t.JMeterThread: Thread started: TestWeb 1-1
+2024-05-27 19:38:03,753 INFO o.a.j.t.JMeterThread: Thread is done: TestWeb 1-1
+2024-05-27 19:38:03,754 INFO o.a.j.t.JMeterThread: Thread finished: TestWeb 1-1
+2024-05-27 19:38:03,755 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2024-05-27 19:38:03,756 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)

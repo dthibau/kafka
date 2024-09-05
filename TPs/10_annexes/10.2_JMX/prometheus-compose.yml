@@ -13,7 +13,7 @@ services:
     container_name: grafana-kafka
     network_mode: "host" 
     volumes:
-      - ./config/provisioning/:/etc/grafana/provisioning/
+      - ./grafana/provisioning/:/etc/grafana/provisioning/
     
 
 

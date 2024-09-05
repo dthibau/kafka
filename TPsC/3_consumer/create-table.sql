@@ -1,6 +1,6 @@
-CREATE TABLE courier (
-    courierId INT NOT NULL,
+CREATE TABLE coursier (
+    coursierId INT NOT NULL,
     kafkaOffset INT NOT NULL,
-    PRIMARY KEY (courierId, kafkaOffset)
+    PRIMARY KEY (coursierId, kafkaOffset)
 );
 

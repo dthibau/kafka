@@ -1,11 +1,0 @@
-
-°
-java:S1130"tRemove the declaration of thrown exception 'java.net.URISyntaxException', as it cannot be thrown from method's body.(‰§¤ÚJ$a4b32934-7e33-414e-bb08-68ebbf70cc1a
-w
-java:S6880"6Replace the chain of if/else with a switch expression.(ëÓèËşÿÿÿÿJ$3eed6306-2395-4a02-b4d9-e34a6182e3ac
-k	java:S106 "+Replace this use of System.err by a logger.(ğŸİşÿÿÿÿJ$0f077e8f-0476-4342-a222-b7ae27a034e7
-š
-java:S21421"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€J$206f1d67-04d5-4e74-8364-cbc723df15a5
-k	java:S1060"+Replace this use of System.out by a logger.(–¬ˆĞıÿÿÿÿJ$f8b3ebb6-d2fb-4626-936c-f096fe23a430
-k	java:S1062"+Replace this use of System.err by a logger.(ù‚µˆøÿÿÿÿJ$01af72ad-745f-4f01-ad95-3627274ff543
-f	java:S1064"+Replace this use of System.out by a logger.(Å—‘¨J$6793e791-7746-4890-b385-9290c94b1419

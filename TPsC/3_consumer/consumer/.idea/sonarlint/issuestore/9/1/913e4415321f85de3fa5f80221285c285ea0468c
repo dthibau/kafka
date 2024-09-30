@@ -1,0 +1,8 @@
+
+j
+java:S2095"OUse try-with-resources or close this "PreparedStatement" in a "finally" clause.(½¨“Ðúÿÿÿÿ
+]
+java:S2095"HUse try-with-resources or close this "Connection" in a "finally" clause.(Ò±­]
+H
+java:S4925"-Remove this "Class.forName()", it is useless.(õ†¨Äùÿÿÿÿ
+E	java:S106 "+Replace this use of System.err by a logger.(ïù¯¯ûÿÿÿÿ

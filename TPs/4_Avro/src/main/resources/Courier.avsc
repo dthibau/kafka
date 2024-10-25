@@ -8,15 +8,6 @@
       "type": "string"
     },
     {
-      "name": "first_name",
-      "type": "string",
-      "default": "undefined"
-    },
-    {
-      "name": "vehicle_id",
-      "type": "int"
-    },
-    {
       "name": "position",
       "type": [
         {

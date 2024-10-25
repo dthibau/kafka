@@ -1,5 +1,5 @@
 CREATE TABLE courier (
-    courierId INT NOT NULL,
+    courierId varchar(20) NOT NULL,
     kafkaOffset INT NOT NULL,
     PRIMARY KEY (courierId, kafkaOffset)
 );

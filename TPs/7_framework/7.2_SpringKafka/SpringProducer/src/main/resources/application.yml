@@ -4,7 +4,18 @@ spring:
     web-application-type: none
   kafka:
     bootstrap-servers: localhost:19092
-
+    ssl:
+      trust-store-location: file:///home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount/kafka.truststore.jks
+      trust-store-password: secret
+    security:
+      protocol: SASL_SSL
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: PLAIN
+      sasl.jaas.config: >
+            org.apache.kafka.common.security.plain.PlainLoginModule required
+            username="alice"
+            password="alice-secret";
     producer:
       bootstrap-servers:
       - localhost:19092
@@ -13,4 +24,4 @@ spring:
       key-serializer:
         org.apache.kafka.common.serialization.StringSerializer
       value-serializer:
-        org.formation.model.JsonSerializer 
+        org.formation.model.JsonSerializer

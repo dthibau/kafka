@@ -1,7 +1,6 @@
 ﻿using KafkaProducer.Formation.model;
 using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 
 class Program
@@ -19,71 +18,31 @@ class Program
         int nbMessages = int.Parse(args[1]);
         SendMode sendMode = (SendMode)int.Parse(args[2]);
 
-        string bootstrapServers = "localhost:19092"; // Remplacez par l'adresse de votre serveur Kafka
-        string topic = "position"; // Remplacez par le nom de votre topic Kafka
+        string bootstrapServers = "localhost:19092";
+        string topic = "position";
 
-        ProducerThread producer = new ProducerThread(bootstrapServers, topic, sendMode);
-
-        // Initialiser le chronomètre
         Stopwatch stopwatch = new Stopwatch();
         stopwatch.Start();
 
+        Console.WriteLine($"Starting {nbThreads} threads producing each {nbMessages}. SendMode is {sendMode}");
         // Crée et démarre les threads
         var tasks = new Task[nbThreads];
         for (int i = 0; i < nbThreads; i++)
         {
             int threadIndex = i;
-            switch (sendMode)
+            tasks[i] = Task.Run(async () =>
             {
-                case SendMode.FIRE_AND_FORGET:
-                       tasks[i] = Task.Run(() =>
-                            {
-                                Coursier coursier = new Coursier(threadIndex, new Position(45, 45));
-                                for (int j = 0; j < nbMessages; j++)
-                                {
-                                    coursier.move();
-                                    producer.ProduceFireAndForget(coursier);
-                                    Thread.Sleep(100);
-                                }
-                        });
-                    break;
-                case SendMode.SYNCHRONE:
-                    tasks[i] = Task.Run(() =>
-                    {
-                        Coursier coursier = new Coursier(threadIndex, new Position(45, 45));
-                        for (int j = 0; j < nbMessages; j++)
-                        {
-                            coursier.move();
-                            producer.ProduceSynchronously(coursier);
-                            Thread.Sleep(100);
-                        }
-                    });
-                    break;
-                case SendMode.ASYNCHRONE:
-                    tasks[i] = Task.Run(async () =>
-                    {
-                        Coursier coursier = new Coursier(threadIndex, new Position(45, 45));
-                        for (int j = 0; j < nbMessages; j++)
-                        {
-                            coursier.move();
-                            await producer.ProduceAsynchronously(coursier);
-                            Thread.Sleep(100);
-                        }
-                     });
-                    break;
-                default:
-                    Console.WriteLine($"Mode inconnu: {sendMode}");
-                    break; ;
-            }
+                var producer = new ProducerThread(bootstrapServers, topic, sendMode);
+
+                Console.WriteLine($"Starting thread {threadIndex}");
+                await producer.StartProducing(threadIndex, nbMessages);
+                Console.WriteLine($"Finished thread {threadIndex}");
+            });
         }
 
-        // Attendre que tous les threads aient terminé
         await Task.WhenAll(tasks);
 
-        // Arrêter le chronomètre
         stopwatch.Stop();
-
-        // Afficher le temps total d'exécution
         Console.WriteLine($"Tous les messages ont été envoyés. Temps total d'exécution : {stopwatch.Elapsed.TotalSeconds} secondes.");
     }
 }

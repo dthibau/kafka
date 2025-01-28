@@ -59,6 +59,27 @@ services:
       - kafka_2_data:/bitnami/kafka
     networks:
       - kafka-cluster
+  
+  kafka-3:
+    image: docker.io/bitnami/kafka:3.7
+    container_name: kafka-3
+    ports:
+      - "19095:19095"
+    environment:
+      - ALLOW_PLAINTEXT_LISTENER=yes
+      - KAFKA_CFG_NODE_ID=3
+      - KAFKA_CFG_PROCESS_ROLES=broker
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093
+      - KAFKA_KRAFT_CLUSTER_ID=abcdefghijklmnopqrstuv
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,EXTERNAL://:19095
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka-3:9092,EXTERNAL://localhost:19095
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT
+    volumes:
+      - kafka_3_data:/bitnami/kafka
+    networks:
+      - kafka-cluster
+  
   akhq:
     # build:
     #   context: .
@@ -103,6 +124,8 @@ volumes:
   kafka_1_data:
     driver: local
   kafka_2_data:
+    driver: local
+  kafka_3_data:
     driver: local
 networks:
   kafka-cluster:

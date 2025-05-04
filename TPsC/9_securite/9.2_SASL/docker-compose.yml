@@ -28,8 +28,8 @@ services:
       - KAFKA_OPTS=-Djava.security.auth.login.config=/opt/bitnami/kafka/config/kafka_jaas.conf
     volumes:
       - kafka_0_data:/bitnami/kafka
-      - /home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount:/bitnami/kafka/config/certs/
-      - /home/dthibau/Formations/Kafka/github/kafka-solutions/kafka_jaas.conf:/opt/bitnami/kafka/config/kafka_jaas.conf
+      - ./ssl/mount:/bitnami/kafka/config/certs/
+      - ./kafka_jaas.conf:/opt/bitnami/kafka/config/kafka_jaas.conf
 
     networks:
       - kafka-cluster
@@ -63,8 +63,8 @@ services:
       - BITNAMI_DEBUG=yes
     volumes:
       - kafka_1_data:/bitnami/kafka
-      - /home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount:/bitnami/kafka/config/certs/
-      - /home/dthibau/Formations/Kafka/github/kafka-solutions/kafka_jaas.conf:/opt/bitnami/kafka/config/kafka_jaas.conf
+      - ./ssl/mount:/bitnami/kafka/config/certs/
+      - ./kafka_jaas.conf:/opt/bitnami/kafka/config/kafka_jaas.conf
     networks:
       - kafka-cluster
   kafka-2:
@@ -97,8 +97,8 @@ services:
       - KAFKA_OPTS=-Djava.security.auth.login.config=/opt/bitnami/kafka/config/kafka_jaas.conf
     volumes:
       - kafka_2_data:/bitnami/kafka
-      - /home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount:/bitnami/kafka/config/certs/
-      - /home/dthibau/Formations/Kafka/github/kafka-solutions/kafka_jaas.conf:/opt/bitnami/kafka/config/kafka_jaas.conf
+      - ./ssl/mount:/bitnami/kafka/config/certs/
+      - ./kafka_jaas.conf:/opt/bitnami/kafka/config/kafka_jaas.conf
     networks:
       - kafka-cluster
 

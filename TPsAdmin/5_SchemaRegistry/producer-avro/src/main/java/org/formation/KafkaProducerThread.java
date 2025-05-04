@@ -7,8 +7,6 @@ import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
-import org.formation.model.Courier;
-import org.formation.model.Position;
 
 
 import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;

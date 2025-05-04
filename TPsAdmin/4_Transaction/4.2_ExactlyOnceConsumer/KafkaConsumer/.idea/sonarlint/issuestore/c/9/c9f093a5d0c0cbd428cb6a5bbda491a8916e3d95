@@ -1,8 +1,4 @@
 
-E
-java:S3740"/Provide the parametrized type for this generic.(ÞðŽÁ
-Š
-java:S1130"tRemove the declaration of thrown exception 'java.net.URISyntaxException', as it cannot be thrown from method's body.(‰§¤Ú
 @	java:S106"+Replace this use of System.err by a logger.(“‡„ô
 H
 java:S6881,"2Use virtual threads for heavy blocking operations.(¬Æ„°

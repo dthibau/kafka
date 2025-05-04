@@ -11,4 +11,4 @@ spring:
       key-serializer:
         org.apache.kafka.common.serialization.StringSerializer
       value-serializer:
-        org.formation.model.JsonSerializer 
+        org.formation.model.JsonSerializer

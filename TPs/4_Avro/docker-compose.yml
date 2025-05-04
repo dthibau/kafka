@@ -59,8 +59,6 @@ services:
     networks:
       - kafka-cluster
   akhq:
-    # build:
-    #   context: .
     image: tchiotludo/akhq
     container_name: kafka-akhq
     command: |
@@ -76,7 +74,11 @@ services:
             docker-kafka-server:
               properties:
                 bootstrap.servers: "kafka-0:9092,kafka-1:9092,kafka-2:9092"
-
+              schema-registry:
+                url: "http://schema-registry:8085" # Adresse du Schema Registry
+    depends_on:
+      schema-registry:
+        condition: service_healthy
     ports:
       - 8080:8080
     networks:
@@ -92,10 +94,8 @@ services:
       - KAFKA_SCHEMAREGISTRY_ENABLED=true
       - KAFKA_SCHEMAREGISTRY_URLS=http://schema-registry:8085
     depends_on:
-      - kafka-0
-      - kafka-1
-      - kafka-2
-      - schema-registry
+      schema-registry:
+        condition: service_healthy
     networks:
       - kafka-cluster
 
@@ -114,6 +114,12 @@ services:
       SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
       SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
       SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8085"]
+      interval: 15s
+      timeout: 5s
+      start_period: 15s
+      retries: 4
     networks:
       - kafka-cluster
       

@@ -3,8 +3,6 @@
 .project
 **/target/*
 **/.settings/
-*.odt
-*.odp
 *#
 **/bin/
 **/.idea/

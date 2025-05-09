@@ -10,14 +10,12 @@ public class KafkaConsumerThread implements Runnable {
 
 	public static String TOPIC = "position";
 	KafkaConsumer<String, Courier> consumer;
-	private long sleep;
 	private String id;
 	
 	
 
-	public KafkaConsumerThread(String id, long sleep) {
+	public KafkaConsumerThread(String id) {
 		this.id = id;
-		this.sleep = sleep;
 
 		_initConsumer();
 

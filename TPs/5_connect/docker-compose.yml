@@ -63,10 +63,10 @@ services:
     container_name: kafka-connect
     environment:
       - CONNECT_BOOTSTRAP_SERVERS=kafka-0:9092
-      - CONNECT_GROUP_ID=quickstart
-      - CONNECT_CONFIG_STORAGE_TOPIC=quickstart-config
-      - CONNECT_OFFSET_STORAGE_TOPIC=quickstart-offsets
-      - CONNECT_STATUS_STORAGE_TOPIC=quickstart-status
+      - CONNECT_GROUP_ID=formation
+      - CONNECT_CONFIG_STORAGE_TOPIC=__formation-config
+      - CONNECT_OFFSET_STORAGE_TOPIC=__formation-offsets
+      - CONNECT_STATUS_STORAGE_TOPIC=__fonction-status
       - CONNECT_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - CONNECT_INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
@@ -172,11 +172,14 @@ services:
 
 volumes:
   kafka_0_data:
-    driver: local
+    name: kafka_0_data
+    external: true
   kafka_1_data:
-    driver: local
+    name: kafka_1_data
+    external: true
   kafka_2_data:
-    driver: local
+    name: kafka_2_data
+    external: true
 networks:
   kafka-cluster:
 

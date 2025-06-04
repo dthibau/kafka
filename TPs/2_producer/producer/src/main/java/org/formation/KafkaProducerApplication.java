@@ -45,8 +45,7 @@ public class KafkaProducerApplication {
 		executorService.shutdown();
 
 		try {
-			System.out.println(executorService.awaitTermination(nbMessages*sleep + 1000, TimeUnit.MILLISECONDS));
-		} catch (InterruptedException e) {
+			System.out.println(executorService.awaitTermination(nbMessages*sleep+(nbThreads*5000), TimeUnit.MILLISECONDS));		} catch (InterruptedException e) {
 			System.err.println("INTERRUPTED");
 		}
 		System.out.println("Execution in "+ (System.currentTimeMillis()-top) + "ms");

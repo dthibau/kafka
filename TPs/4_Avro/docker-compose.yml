@@ -125,11 +125,14 @@ services:
       
 volumes:
   kafka_0_data:
-    driver: local
+    name: kafka_0_data
+    external: true
   kafka_1_data:
-    driver: local
+    name: kafka_1_data
+    external: true
   kafka_2_data:
-    driver: local
+    name: kafka_2_data
+    external: true 
 networks:
   kafka-cluster:
 

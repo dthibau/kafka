@@ -102,11 +102,12 @@ services:
 volumes:
   kafka_0_data:
     driver: local
+    name: kafka_0_data
   kafka_1_data:
     driver: local
+    name: kafka_1_data
   kafka_2_data:
     driver: local
-  kafka_3_data:
-    driver: local
+    name: kafka_2_data
 networks:
   kafka-cluster:

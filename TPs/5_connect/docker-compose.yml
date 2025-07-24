@@ -109,7 +109,7 @@ services:
       - kafka-cluster
       
   redpanda:
-    image : docker.redpanda.com/redpandadata/console:latest
+    image : docker.redpanda.com/redpandadata/console@sha256:8d2e0258db826d5e10bf9e81a4e37ca2bf52b49af19b299c0359c5800b1225a5
     container_name: kafka-redpanda
     ports: 
       - 9090:8080

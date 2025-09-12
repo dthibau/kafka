@@ -1,11 +1,13 @@
 services:
 
-  redpanda:
-    image : docker.redpanda.com/redpandadata/console:latest
+  redpanda-console:
+    image: docker.redpanda.com/redpandadata/console:v3.2.1
     container_name: redpanda-console
-    network_mode: "host"  # Use host network to access Kafka, listenning to 8080
+    network_mode: "host"
     environment:
-      - KAFKA_BROKERS=localhost:9092,localhost:9192,localhost:9292
+      CONFIG_FILEPATH: /etc/redpanda/redpanda-console-config.yaml
+    volumes:
+      - ./redpanda/config.yaml:/etc/redpanda/redpanda-console-config.yaml
 
   akhq:
     image: tchiotludo/akhq
@@ -34,7 +36,7 @@ services:
     container_name: kafka-magic
     network_mode: "host"  # Use host network to access Kafka listenning to 80
     volumes:
-      - ./config:/config
+      - ./kafka-magic/config:/config
     environment:
       # KMAGIC_ALLOW_TOPIC_DELETE: "true"
       KMAGIC_CONFIG_STORE_TYPE: "file"

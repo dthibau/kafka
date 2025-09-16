@@ -8,9 +8,10 @@ services:
     depends_on:
       - schema-registry
     environment:
-      KAFKA_BROKERS: localhost:9092,localhost:9192,localhost:9292
-      KAFKA_SCHEMAREGISTRY_ENABLED: 'true'
-      KAFKA_SCHEMAREGISTRY_URLS: http://localhost:8085
+      CONFIG_FILEPATH: /etc/redpanda/redpanda-console-config.yaml
+    volumes:
+      - ./redpanda/config.yaml:/etc/redpanda/redpanda-console-config.yaml
+
 
   akhq:
     image: tchiotludo/akhq

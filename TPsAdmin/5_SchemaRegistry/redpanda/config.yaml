@@ -1,0 +1,14 @@
+kafka:
+  brokers:
+    - "localhost:9092"
+    - "localhost:9192"
+    - "localhost:9292"
+
+server:
+  listenAddress: "0.0.0.0"
+  listenPort: 8080
+
+schemaRegistry:
+  enabled: true
+  urls:
+    - "http://localhost:8085"

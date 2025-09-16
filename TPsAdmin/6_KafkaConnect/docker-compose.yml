@@ -1,23 +1,84 @@
-version: "3.5"
+
+
 services:
+  redpanda:
+    image : docker.redpanda.com/redpandadata/console:latest
+    container_name: redpanda-console
+    network_mode: "host"  # Use host network to access Kafka, listenning to 8080
+    depends_on:
+      - schema-registry
+    environment:
+      CONFIG_FILEPATH: /etc/redpanda/redpanda-console-config.yaml
+    volumes:
+      - ./redpanda/config.yaml:/etc/redpanda/redpanda-console-config.yaml
+
+  akhq:
+    image: tchiotludo/akhq
+    container_name: akhq
+    network_mode: "host"  # Use host network to access Kafka, listenning to 8081
+    depends_on:
+      - schema-registry
+    command: |
+      java -Xmx512m -Xms512m 
+           -Dfile.encoding=UTF-8 -Djava.awt.headless=true 
+           -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.log 
+           -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8686 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false 
+           -jar /app/akhq.jar
+    environment:
+      AKHQ_CONFIGURATION: |
+        micronaut:
+          server:
+            port: 8081
+        akhq:
+          connections:
+            docker-kafka-server:
+              properties:
+                bootstrap.servers: "localhost:9092,localhost:9192,localhost:9292"
+              schema-registry:
+                url: "http://localhost:8085"
+                
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    container_name: schema-registry
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9192'
+      SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
+      SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
+      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+
+  kafka-connect:
+    image: my-kafka-connect-with-elasticsearch
+    container_name: kafka-connect
+    network_mode: host
+    environment:
+      - CONNECT_BOOTSTRAP_SERVERS=localhost:9092
+      - CONNECT_GROUP_ID=formation
+      - CONNECT_CONFIG_STORAGE_TOPIC=__formation-config
+      - CONNECT_OFFSET_STORAGE_TOPIC=__formation-offsets
+      - CONNECT_STATUS_STORAGE_TOPIC=__fonction-status
+      - CONNECT_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
+      - CONNECT_REST_ADVERTISED_HOST_NAME=localhost
+      - CONNECT_PLUGIN_PATH=/usr/share/java,/usr/share/confluent-hub-components
+      #- CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE=false
+      #- CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE=false 
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1
-    networks:
-     - elk
-    ports:
-      - "9200:9200"
+    network_mode: host
+    container_name: elasticsearch
     environment:
       - "discovery.type=single-node"
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.7.1
-    networks:
-     - elk
-    ports:
-      - "5601:5601"
+    container_name: kibana
+    network_mode: host
     restart: on-failure
     depends_on:
       - elasticsearch
 
-networks:
-  elk:

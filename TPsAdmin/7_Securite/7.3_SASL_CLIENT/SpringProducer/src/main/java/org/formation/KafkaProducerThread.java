@@ -37,6 +37,7 @@ public class KafkaProducerThread implements Runnable {
 				System.err.println("INTERRUPTED");
 			}
 			courier.move();
+			System.out.println("Message sent by "+courier.getId());
 
 		}
 		

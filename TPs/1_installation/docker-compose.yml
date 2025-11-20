@@ -38,7 +38,7 @@ services:
       KAFKA_CONTROLLER_QUORUM_VOTERS: '1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093'
       KAFKA_LISTENERS: 'PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:19092'
       KAFKA_INTER_BROKER_LISTENER_NAME: 'PLAINTEXT'
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:19092,EXTERNAL://localhost:19093
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:9092,EXTERNAL://localhost:19093
       KAFKA_CONTROLLER_LISTENER_NAMES: 'CONTROLLER'
       CLUSTER_ID: '4L6g3nShT-eMCtK--X86sw'
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -100,13 +100,23 @@ services:
     networks:
       - kafka-cluster
       
-  redpanda:
-    image : docker.redpanda.com/redpandadata/console@sha256:8d2e0258db826d5e10bf9e81a4e37ca2bf52b49af19b299c0359c5800b1225a5
+  console:
+    image: docker.redpanda.com/redpandadata/console:v2.3.8
     container_name: kafka-redpanda
-    ports: 
-      - 9090:8080
+    restart: on-failure
+    entrypoint: /bin/sh
+    command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
     environment:
-      - KAFKA_BROKERS=kafka-1:9092,kafka-2:9092,kafka-3:9092
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["kafka-1:9092","kafka-2:9092","kafka-3:9092"]
+          schemaRegistry:
+            enabled: false
+        connect:
+          enabled: false
+    ports:
+      - "9090:8080"
     depends_on:
       - kafka-1
       - kafka-2

@@ -59,7 +59,7 @@ services:
     networks:
       - kafka-cluster
   kafka-connect:
-    image: my-kafka-connect-with-elasticsearch-15
+    image: my-kafka-connect-with-elasticsearch
     container_name: kafka-connect
     environment:
       - CONNECT_BOOTSTRAP_SERVERS=kafka-0:9092

@@ -14,7 +14,7 @@ public class KafkaConsumerApplication {
 		try {
 			nbThreads = Integer.parseInt(args[0]);
 		} catch (Exception e) {
-			System.err.println("Usage is <run> <nbThreads> <sleep>");
+			System.err.println("Usage is <run> <nbThreads> ");
 			System.exit(1);
 		}
 

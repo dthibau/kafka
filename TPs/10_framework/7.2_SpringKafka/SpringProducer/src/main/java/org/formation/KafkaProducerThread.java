@@ -32,10 +32,11 @@ public class KafkaProducerThread implements Runnable {
 				else
 					this.template.send("position", courier.getId(), new Message(i,new Date(),courier)).get();
 
-				Thread.sleep(10);
+				Thread.sleep(1000);
 			} catch (InterruptedException | ExecutionException e) {
 				System.err.println("INTERRUPTED");
 			}
+
 			courier.move();
 
 		}

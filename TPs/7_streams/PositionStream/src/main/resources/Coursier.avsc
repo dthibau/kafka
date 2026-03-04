@@ -1,11 +1,11 @@
 {
   "type": "record",
   "name": "Coursier",
-  "namespace": "model",
+  "namespace": "org.formation.model",
   "fields": [
     {
       "name": "id",
-      "type": "long"
+      "type": "string"
     },
     {
       "name": "position",
@@ -13,7 +13,7 @@
         {
           "type":	"record",
           "name": "Position",
-          "namespace":  "model",
+          "namespace":  "org.formation.model",
           "fields":  [
             {
               "name": "latitude",

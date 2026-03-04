@@ -23,7 +23,6 @@ public class KafkaConsumerThread implements Runnable {
 
 	@Override
 	public void run() {
-		Map<String, Integer> updateMap = new HashMap<>();
 		try {
 			while (true) {
 

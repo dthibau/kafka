@@ -5,7 +5,7 @@ spring:
   kafka:
     bootstrap-servers: localhost:19092
     ssl:
-      trust-store-location: file:///home/dthibau/Formations/Kafka/github/kafka-solutions/ssl/mount/kafka.truststore.jks
+      trust-store-location: file:///home/dthibau/Formations/Kafka/github/slides/TPs/9_securite/9.1_SSL/ssl/mount/kafka.truststore.jks
       trust-store-password: secret
     security:
       protocol: SASL_SSL

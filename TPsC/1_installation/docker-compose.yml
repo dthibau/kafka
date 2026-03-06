@@ -3,7 +3,7 @@ services:
   # ── Kafka KRaft cluster ──────────────────────────────────────────────────────
 
   kafka-0:
-    image: apache/kafka:latest
+    image: apache/kafka:4.2.0
     container_name: kafka-0
     hostname: kafka-0
     restart: unless-stopped
@@ -14,10 +14,10 @@ services:
       KAFKA_CLUSTER_ID: "Mk3OEYBSD34fcwNTJENDM2Qk"   # base64-encoded, 22 chars
 
       # Listeners
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-0:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LISTENERS: BROKER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://kafka-0:9092,EXTERNAL://localhost:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
 
       # KRaft quorum (all three nodes are controllers)
@@ -38,17 +38,18 @@ services:
       - kafka-0-data:/var/lib/kafka/data
     ports:
       - "9092:9092"
+      - "19092:19092"
     networks:
       - kafka-net
     healthcheck:
-      test: ["CMD-SHELL", "kafka-broker-api-versions.sh --bootstrap-server kafka-0:9092 || exit 1"]
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 || exit 1"]
       interval: 15s
       timeout: 10s
       retries: 5
       start_period: 30s
 
   kafka-1:
-    image: apache/kafka:latest
+    image: apache/kafka:4.2.0
     container_name: kafka-1
     hostname: kafka-1
     restart: unless-stopped
@@ -57,10 +58,10 @@ services:
       KAFKA_PROCESS_ROLES: broker,controller
       KAFKA_CLUSTER_ID: "Mk3OEYBSD34fcwNTJENDM2Qk"
 
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-1:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LISTENERS: BROKER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://kafka-1:9092,EXTERNAL://localhost:19093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
 
       KAFKA_CONTROLLER_QUORUM_VOTERS: "0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093"
@@ -77,18 +78,18 @@ services:
     volumes:
       - kafka-1-data:/var/lib/kafka/data
     ports:
-      - "9093:9092"
+      - "19093:19092"
     networks:
       - kafka-net
     healthcheck:
-      test: ["CMD-SHELL", "kafka-broker-api-versions.sh --bootstrap-server kafka-1:9092 || exit 1"]
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 || exit 1"]
       interval: 15s
       timeout: 10s
       retries: 5
       start_period: 30s
 
   kafka-2:
-    image: apache/kafka:latest
+    image: apache/kafka:4.2.0
     container_name: kafka-2
     hostname: kafka-2
     restart: unless-stopped
@@ -97,10 +98,10 @@ services:
       KAFKA_PROCESS_ROLES: broker,controller
       KAFKA_CLUSTER_ID: "Mk3OEYBSD34fcwNTJENDM2Qk"
 
-      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-2:9092
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_LISTENERS: BROKER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://kafka-2:9092,EXTERNAL://localhost:19094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
 
       KAFKA_CONTROLLER_QUORUM_VOTERS: "0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093"
@@ -117,11 +118,11 @@ services:
     volumes:
       - kafka-2-data:/var/lib/kafka/data
     ports:
-      - "9094:9092"
+      - "19094:19092"
     networks:
       - kafka-net
     healthcheck:
-      test: ["CMD-SHELL", "kafka-broker-api-versions.sh --bootstrap-server kafka-2:9092 || exit 1"]
+      test: ["CMD-SHELL", "/opt/kafka/bin/kafka-broker-api-versions.sh --bootstrap-server localhost:9092 || exit 1"]
       interval: 15s
       timeout: 10s
       retries: 5
@@ -130,7 +131,7 @@ services:
   # ── Redpanda Console ─────────────────────────────────────────────────────────
 
   redpanda-console:
-    image: redpandadata/console:latest
+    image: redpandadata/console:v3.5.3
     container_name: redpanda-console
     hostname: redpanda-console
     restart: unless-stopped

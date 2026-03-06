@@ -1,72 +1,121 @@
-version: '3.9'
 services:
-  kafka-broker-1:
-    image: apache/kafka-native:3.9.0
-    container_name: kafka-broker-1
-    ports:
-      - "29092:9092"
+  # --- Kafka Native KRaft cluster ---
+  # Les 3 nœuds sont configurés de manière identique, seule l'ID et les ports changent.
+  
+  kafka-0:
+    image: apache/kafka-native:4.2.0  # Image Native (GraalVM)
+    container_name: kafka-0
+    hostname: kafka-0
+    restart: unless-stopped
     environment:
-      - KAFKA_PROCESS_ROLES=broker,controller
-      - KAFKA_NODE_ID=1
-      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-broker-1:19092,2@kafka-broker-2:19092,3@kafka-broker-3:19092
-      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:19092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka-broker-1:9092
-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      - KAFKA_LOG_DIRS=/tmp/kraft-combined-logs
-      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
-      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
-      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=3
-      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=2
-      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=3
+      KAFKA_NODE_ID: 0
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CLUSTER_ID: "Mk3OEYBSD34fcwNTJENDM2Qk"
+      KAFKA_LISTENERS: BROKER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://kafka-0:9092,EXTERNAL://localhost:19092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 2
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 3
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
     volumes:
-      - kafka1-data:/tmp/kraft-combined-logs
+      - kafka-0-data:/var/lib/kafka/data
+    ports:
+      - "9092:9092"
+      - "19092:19092"
+    networks:
+      - kafka-net
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 9092 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
-  kafka-broker-2:
-    image: apache/kafka-native:3.9.0
-    container_name: kafka-broker-2
-    ports:
-      - "29093:9092"
+  kafka-1:
+    image: apache/kafka-native:4.2.0
+    container_name: kafka-1
+    hostname: kafka-1
+    restart: unless-stopped
     environment:
-      - KAFKA_PROCESS_ROLES=broker,controller
-      - KAFKA_NODE_ID=2
-      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-broker-1:19092,2@kafka-broker-2:19092,3@kafka-broker-3:19092
-      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:19092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka-broker-2:9093
-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      - KAFKA_LOG_DIRS=/tmp/kraft-combined-logs
-      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
-      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
-      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=3
-      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=2
-      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=3
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CLUSTER_ID: "Mk3OEYBSD34fcwNTJENDM2Qk"
+      KAFKA_LISTENERS: BROKER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://kafka-1:9092,EXTERNAL://localhost:19093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
     volumes:
-      - kafka2-data:/tmp/kraft-combined-logs
+      - kafka-1-data:/var/lib/kafka/data
+    ports:
+      - "19093:19092"
+    networks:
+      - kafka-net
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 9092 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
-  kafka-broker-3:
-    image: apache/kafka-native:3.9.0
-    container_name: kafka-broker-3
-    ports:
-      - "29094:9092"
+  kafka-2:
+    image: apache/kafka-native:4.2.0
+    container_name: kafka-2
+    hostname: kafka-2
+    restart: unless-stopped
     environment:
-      - KAFKA_PROCESS_ROLES=broker,controller
-      - KAFKA_NODE_ID=3
-      - KAFKA_CONTROLLER_QUORUM_VOTERS=1@kafka-broker-1:19092,2@kafka-broker-2:19092,3@kafka-broker-3:19092
-      - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:19092
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka-broker-3:9094
-      - KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
-      - KAFKA_LOG_DIRS=/tmp/kraft-combined-logs
-      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
-      - KAFKA_CONTROLLER_LISTENER_NAMES=CONTROLLER
-      - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
-      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=3
-      - KAFKA_TRANSACTION_STATE_LOG_MIN_ISR=2
-      - KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR=3
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CLUSTER_ID: "Mk3OEYBSD34fcwNTJENDM2Qk"
+      KAFKA_LISTENERS: BROKER://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093,EXTERNAL://0.0.0.0:19092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://kafka-2:9092,EXTERNAL://localhost:19094
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "0@kafka-0:9093,1@kafka-1:9093,2@kafka-2:9093"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
     volumes:
-      - kafka3-data:/tmp/kraft-combined-logs
+      - kafka-2-data:/var/lib/kafka/data
+    ports:
+      - "19094:19092"
+    networks:
+      - kafka-net
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 9092 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redpanda-console:
+    image: redpandadata/console:v3.5.3
+    container_name: redpanda-console
+    restart: unless-stopped
+    depends_on:
+      kafka-0: { condition: service_healthy }
+      kafka-1: { condition: service_healthy }
+      kafka-2: { condition: service_healthy }
+    environment:
+      KAFKA_BROKERS: "kafka-0:9092,kafka-1:9092,kafka-2:9092"
+    ports:
+      - "8080:8080"
+    networks:
+      - kafka-net
 
 volumes:
-  kafka1-data:
-  kafka2-data:
-  kafka3-data:
+  kafka-0-data:
+  kafka-1-data:
+  kafka-2-data:
+
+networks:
+  kafka-net:
+    driver: bridge

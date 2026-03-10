@@ -180,10 +180,13 @@ services:
 
 volumes:
   kafka-0-data:
+    name: csharp-kafka-0-data
     driver: local
   kafka-1-data:
+    name: csharp-kafka-1-data
     driver: local
   kafka-2-data:
+    name: csharp-kafka-2-data
     driver: local
 
 # ── Network ──────────────────────────────────────────────────────────────────

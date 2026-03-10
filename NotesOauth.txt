@@ -1,0 +1,14 @@
+ Class ...secured.OAuthBearerValidatorCallbackHandler could not │ Classes déplacées dans Kafka 4.x       │ Package ...oauthbearer. au lieu de ...oauthbearer.secured.                  │
+  │  be found                                                      │                                        │                                                                             │
+  ├────────────────────────────────────────────────────────────────┼────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+  │ URL cannot be accessed due to restrictions                     │ Set.contains() = match exact           │ URLs complètes (certs + token) dans KAFKA_OPTS                              │
+  ├────────────────────────────────────────────────────────────────┼────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+  │ Issuer doesn't match expected value                            │ Keycloak utilise le hostname de la     │ KC_HOSTNAME=localhost + KC_HOSTNAME_PORT=9090                               │
+  │                                                                │ requête pour iss                       │                                                                             │
+  ├────────────────────────────────────────────────────────────────┼────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+  │ JAAS options dépréciées                                        │ Kafka 4.x préfère les config           │ KAFKA_LISTENER_NAME_BROKER_SASL_OAUTHBEARER_CLIENT_CREDENTIALS_CLIENT_ID    │
+  │                                                                │ properties                             │ etc.                                                                        │
+  ├────────────────────────────────────────────────────────────────┼────────────────────────────────────────┼─────────────────────────────────────────────────────────────────────────────┤
+  │ Volumes périmés                                                │ Métadonnées SASL/PLAIN incompatibles   │ Volumes dédiés oauth-kafka-*-data                                           │
+  └────────────────────────────────────────────────────────────────┴────────────────────────────────────────┴─────────────────────────────────────────────────────────────────────────────┘
+

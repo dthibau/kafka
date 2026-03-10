@@ -146,6 +146,7 @@ services:
       - kafka-0-data:/var/lib/kafka/data
       - ./ssl/mount:/etc/kafka/secrets/
       - ./setup-acls.sh:/tmp/setup-acls.sh:ro
+      - ./setup-quotas.sh:/tmp/setup-quotas.sh:ro
       - ./admin.properties:/etc/kafka/admin.properties:ro
     ports:
       - "19092:19092"

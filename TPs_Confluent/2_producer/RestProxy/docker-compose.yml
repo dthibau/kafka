@@ -1,0 +1,188 @@
+services:
+  kafka-1:
+    image: confluentinc/cp-server:7.7.8
+    hostname: kafka-1
+    container_name: kafka-1
+    ports:
+      - "19092:19092"
+    environment:
+      KAFKA_NODE_ID: 1
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093"
+      KAFKA_LISTENERS: "PLAINTEXT://kafka-1:9092,CONTROLLER://kafka-1:9093,EXTERNAL://0.0.0.0:19092"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka-1:9092,EXTERNAL://localhost:19092"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      CLUSTER_ID: "4L6g3nShT-eMCtK--X86sw"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 2
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafka-1:9092,kafka-2:9092,kafka-3:9092
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 3
+      CONFLUENT_METRICS_ENABLE: "true"
+    networks:
+      - kafka-cluster
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "kafka-1:9092", "--list"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  kafka-2:
+    image: confluentinc/cp-server:7.7.8
+    hostname: kafka-2
+    container_name: kafka-2
+    ports:
+      - "19093:19092"
+    environment:
+      KAFKA_NODE_ID: 2
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093"
+      KAFKA_LISTENERS: "PLAINTEXT://kafka-2:9092,CONTROLLER://kafka-2:9093,EXTERNAL://0.0.0.0:19092"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka-2:9092,EXTERNAL://localhost:19093"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      CLUSTER_ID: "4L6g3nShT-eMCtK--X86sw"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 2
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafka-1:9092,kafka-2:9092,kafka-3:9092
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 3
+      CONFLUENT_METRICS_ENABLE: "true"
+    networks:
+      - kafka-cluster
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "kafka-2:9092", "--list"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  kafka-3:
+    image: confluentinc/cp-server:7.7.8
+    hostname: kafka-3
+    container_name: kafka-3
+    ports:
+      - "19094:19092"
+    environment:
+      KAFKA_NODE_ID: 3
+      KAFKA_PROCESS_ROLES: "broker,controller"
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "1@kafka-1:9093,2@kafka-2:9093,3@kafka-3:9093"
+      KAFKA_LISTENERS: "PLAINTEXT://kafka-3:9092,CONTROLLER://kafka-3:9093,EXTERNAL://0.0.0.0:19092"
+      KAFKA_ADVERTISED_LISTENERS: "PLAINTEXT://kafka-3:9092,EXTERNAL://localhost:19094"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_CONTROLLER_LISTENER_NAMES: "CONTROLLER"
+      CLUSTER_ID: "4L6g3nShT-eMCtK--X86sw"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 3
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 2
+      KAFKA_MIN_INSYNC_REPLICAS: 2
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS: kafka-1:9092,kafka-2:9092,kafka-3:9092
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 3
+      CONFLUENT_METRICS_ENABLE: "true"
+    networks:
+      - kafka-cluster
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--bootstrap-server", "kafka-3:9092", "--list"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  rest-proxy:
+    image: confluentinc/cp-kafka-rest:7.7.8
+    hostname: rest-proxy
+    container_name: rest-proxy
+    depends_on:
+      kafka-1:
+        condition: service_healthy
+      kafka-2:
+        condition: service_healthy
+      kafka-3:
+        condition: service_healthy
+    ports:
+      - "8082:8082"
+    environment:
+      KAFKA_REST_HOST_NAME: rest-proxy
+      KAFKA_REST_BOOTSTRAP_SERVERS: "kafka-1:9092,kafka-2:9092,kafka-3:9092"
+      KAFKA_REST_LISTENERS: "http://0.0.0.0:8082"
+      # Permettre au proxy de passer les configs producer via headers X-Kafka-*
+      KAFKA_REST_CLIENT_SECURITY_PROTOCOL: PLAINTEXT
+      # Paramètres producer par défaut (surchargeables par headers X-Kafka-*)
+      KAFKA_REST_PRODUCER_ACKS: "1"
+      KAFKA_REST_PRODUCER_LINGER_MS: "0"
+      KAFKA_REST_PRODUCER_BATCH_SIZE: "16384"
+      # Activer la surcharge des configs producer via headers HTTP
+      KAFKA_REST_PRODUCER_MAX_BLOCK_MS: "5000"
+      KAFKA_REST_REQUEST_TIMEOUT_MS: "10000"
+      KAFKA_REST_ACCESS_CONTROL_ALLOW_ORIGIN: "*"
+      KAFKA_REST_ACCESS_CONTROL_ALLOW_METHODS: "GET,POST,PUT,DELETE"
+      KAFKA_REST_CONSUMER_REQUEST_TIMEOUT_MS: "3000"
+      KAFKA_REST_CONSUMER_REQUEST_MAX_BYTES: "1048576"
+    networks:
+      - kafka-cluster
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8082/topics"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+
+  control-center:
+    image: confluentinc/cp-enterprise-control-center:7.7.8
+    hostname: control-center
+    container_name: control-center
+    ports:
+      - "9021:9021"
+    environment:
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: "kafka-1:9092,kafka-2:9092,kafka-3:9092"
+      CONTROL_CENTER_REPLICATION_FACTOR: 3
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 3
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 3
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 3
+      PORT: 9021
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    networks:
+      - kafka-cluster
+
+  console:
+    image: docker.redpanda.com/redpandadata/console:v2.3.8
+    container_name: kafka-redpanda
+    restart: on-failure
+    entrypoint: /bin/sh
+    command: -c "echo \"$$CONSOLE_CONFIG_FILE\" > /tmp/config.yml; /app/console"
+    environment:
+      CONFIG_FILEPATH: /tmp/config.yml
+      CONSOLE_CONFIG_FILE: |
+        kafka:
+          brokers: ["kafka-1:9092","kafka-2:9092","kafka-3:9092"]
+          schemaRegistry:
+            enabled: false
+        connect:
+          enabled: false
+    ports:
+      - "9090:8080"
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+    networks:
+      - kafka-cluster
+
+networks:
+  kafka-cluster:
+    driver: bridge

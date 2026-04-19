@@ -1,0 +1,897 @@
+2026-04-17 18:48:12,357 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-04-17 18:48:12,384 INFO o.a.j.JMeter: Loading user properties from: /home/dthibau/.sdkman/candidates/jmeter/5.6/bin/user.properties
+2026-04-17 18:48:12,385 INFO o.a.j.JMeter: Loading system properties from: /home/dthibau/.sdkman/candidates/jmeter/5.6/bin/system.properties
+2026-04-17 18:48:12,393 INFO o.a.j.JMeter: Copyright (c) 1998-2023 The Apache Software Foundation
+2026-04-17 18:48:12,393 INFO o.a.j.JMeter: Version 5.6
+2026-04-17 18:48:12,393 INFO o.a.j.JMeter: java.version=21.0.2
+2026-04-17 18:48:12,393 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-04-17 18:48:12,393 INFO o.a.j.JMeter: os.name=Linux
+2026-04-17 18:48:12,394 INFO o.a.j.JMeter: os.arch=amd64
+2026-04-17 18:48:12,394 INFO o.a.j.JMeter: os.version=6.8.0-57-generic
+2026-04-17 18:48:12,394 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-04-17 18:48:12,394 INFO o.a.j.JMeter: java.awt.headless=null
+2026-04-17 18:48:12,394 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-04-17 18:48:12,394 INFO o.a.j.JMeter: Available Processors =8
+2026-04-17 18:48:12,408 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-04-17 18:48:12,408 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-04-17 18:48:12,408 INFO o.a.j.JMeter: JMeterHome=/home/dthibau/.sdkman/candidates/jmeter/5.6
+2026-04-17 18:48:12,408 INFO o.a.j.JMeter: user.dir  =/home/dthibau/Formations/kafka/TPs_Confluent/9_securite/9.1_SSL
+2026-04-17 18:48:12,409 INFO o.a.j.JMeter: PWD       =/home/dthibau/Formations/kafka/TPs_Confluent/9_securite/9.1_SSL
+2026-04-17 18:48:12,409 INFO o.a.j.JMeter: IP: 127.0.1.1 Name: dthibau-XPS-13-7390 FullName: dthibau-xps-13-7390
+2026-04-17 18:48:12,436 INFO o.a.j.JMeter: Loaded icon properties from org/apache/jmeter/images/icon.properties
+2026-04-17 18:48:12,848 INFO o.a.j.JMeterGuiLauncher: Setting LAF to: laf:javax.swing.plaf.metal.MetalLookAndFeel
+2026-04-17 18:48:23,030 INFO o.a.j.s.FileServer: Default base='/home/dthibau/Formations/kafka/TPs_Confluent/9_securite/9.1_SSL'
+2026-04-17 18:48:23,034 INFO o.a.j.g.a.Load: Loading file: /home/dthibau/Formations/kafka/TPs_Confluent/2_producer/RestProxy/kafka-rest-proxy.jmx
+2026-04-17 18:48:23,035 INFO o.a.j.s.FileServer: Set new base='/home/dthibau/Formations/kafka/TPs_Confluent/2_producer/RestProxy'
+2026-04-17 18:48:23,336 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-04-17 18:48:23,389 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-04-17 18:48:23,392 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-04-17 18:48:23,396 INFO o.a.j.s.SaveService: Loading file: /home/dthibau/Formations/kafka/TPs_Confluent/2_producer/RestProxy/kafka-rest-proxy.jmx
+2026-04-17 18:48:23,487 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-04-17 18:48:23,487 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-04-17 18:48:23,487 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-04-17 18:48:23,487 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-04-17 18:48:23,487 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-04-17 18:48:23,488 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-04-17 18:48:24,122 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-04-17 18:48:24,122 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to ISO-8859-1
+2026-04-17 18:48:24,125 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-04-17 18:48:24,125 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-04-17 18:48:24,574 ERROR o.a.j.v.ViewResultsFullVisualizer: Exception registering implementation: [org.apache.jmeter.visualizers.RenderInBrowser] of interface: [interface org.apache.jmeter.visualizers.ResultRenderer], a jar is probably missing
+java.util.ServiceConfigurationError: org.apache.jmeter.visualizers.ResultRenderer: org.apache.jmeter.visualizers.RenderInBrowser Unable to get public no-arg constructor
+	at java.util.ServiceLoader.fail(ServiceLoader.java:586) ~[?:?]
+	at java.util.ServiceLoader.getConstructor(ServiceLoader.java:679) ~[?:?]
+	at java.util.ServiceLoader$LazyClassPathLookupIterator.hasNextService(ServiceLoader.java:1240) ~[?:?]
+	at java.util.ServiceLoader$LazyClassPathLookupIterator.hasNext(ServiceLoader.java:1273) ~[?:?]
+	at java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1309) ~[?:?]
+	at java.util.ServiceLoader$3.hasNext(ServiceLoader.java:1393) ~[?:?]
+	at org.apache.jorphan.reflect.ClassFinder.loadServices(ClassFinder.java:115) ~[jorphan.jar:5.6]
+	at org.apache.jmeter.util.JMeterUtils.loadServicesAndScanJars(JMeterUtils.java:345) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createComboRender(ViewResultsFullVisualizer.java:464) ~[ApacheJMeter_components.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.createLeftPanel(ViewResultsFullVisualizer.java:438) ~[ApacheJMeter_components.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.init(ViewResultsFullVisualizer.java:349) ~[ApacheJMeter_components.jar:5.6]
+	at org.apache.jmeter.visualizers.ViewResultsFullVisualizer.<init>(ViewResultsFullVisualizer.java:156) ~[ApacheJMeter_components.jar:5.6]
+	at jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?]
+	at java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?]
+	at org.apache.jmeter.gui.GuiPackage.getGuiFromCache(GuiPackage.java:424) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.GuiPackage.getGui(GuiPackage.java:267) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.GuiPackage.getGui(GuiPackage.java:238) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addComponent(JMeterTreeModel.java:160) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addSubTree(JMeterTreeModel.java:131) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.tree.JMeterTreeModel.addSubTree(JMeterTreeModel.java:123) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.GuiPackage.addSubTree(GuiPackage.java:555) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.insertLoadedTree(Load.java:201) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.loadProjectFile(Load.java:132) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.Load.loadProjectFile(Load.java:103) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.LoadRecentProject.doActionAfterCheck(LoadRecentProject.java:74) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.AbstractActionWithNoRunningTest.doAction(AbstractActionWithNoRunningTest.java:44) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.ActionRouter.performAction(ActionRouter.java:83) ~[ApacheJMeter_core.jar:5.6]
+	at org.apache.jmeter.gui.action.ActionRouter.lambda$actionPerformed$0(ActionRouter.java:65) ~[ApacheJMeter_core.jar:5.6]
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:318) ~[?:?]
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:773) ~[?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:720) ~[?:?]
+	at java.awt.EventQueue$4.run(EventQueue.java:714) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:400) [?:?]
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87) [?:?]
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:742) [?:?]
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124) [?:?]
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109) [?:?]
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101) [?:?]
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:90) [?:?]
+Caused by: java.lang.NoClassDefFoundError: javafx/embed/swing/JFXPanel
+	at java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:3549) ~[?:?]
+	at java.lang.Class.getConstructor0(Class.java:3754) ~[?:?]
+	at java.lang.Class.getConstructor(Class.java:2442) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:666) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:663) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:571) [?:?]
+	at java.util.ServiceLoader.getConstructor(ServiceLoader.java:674) ~[?:?]
+	... 40 more
+Caused by: java.lang.ClassNotFoundException: javafx.embed.swing.JFXPanel
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:445) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:593) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[?:?]
+	at java.lang.Class.getDeclaredConstructors0(Native Method) ~[?:?]
+	at java.lang.Class.privateGetDeclaredConstructors(Class.java:3549) ~[?:?]
+	at java.lang.Class.getConstructor0(Class.java:3754) ~[?:?]
+	at java.lang.Class.getConstructor(Class.java:2442) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:666) ~[?:?]
+	at java.util.ServiceLoader$1.run(ServiceLoader.java:663) ~[?:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:571) ~[?:?]
+	at java.util.ServiceLoader.getConstructor(ServiceLoader.java:674) ~[?:?]
+	... 40 more
+2026-04-17 18:48:24,749 INFO o.a.j.s.FileServer: Set new base='/home/dthibau/Formations/kafka/TPs_Confluent/2_producer/RestProxy'
+2026-04-17 18:49:01,616 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-04-17 18:49:01,618 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-04-17 18:49:01,618 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-04-17 18:49:01,619 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-04-17 18:49:01,620 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-04-17 18:49:01,665 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2026-04-17 18:49:01,725 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Coursiers
+2026-04-17 18:49:01,726 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group Coursiers.
+2026-04-17 18:49:01,726 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-04-17 18:49:01,726 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=100 ramp-up=2 delayedStart=false
+2026-04-17 18:49:01,732 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-1
+2026-04-17 18:49:01,749 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-2
+2026-04-17 18:49:01,768 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-3
+2026-04-17 18:49:01,789 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-4
+2026-04-17 18:49:01,810 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-5
+2026-04-17 18:49:01,830 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-6
+2026-04-17 18:49:01,848 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-7
+2026-04-17 18:49:01,850 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-04-17 18:49:01,850 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-04-17 18:49:01,869 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-8
+2026-04-17 18:49:01,887 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-9
+2026-04-17 18:49:01,908 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-10
+2026-04-17 18:49:01,928 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-11
+2026-04-17 18:49:01,948 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-12
+2026-04-17 18:49:01,967 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-13
+2026-04-17 18:49:01,987 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-14
+2026-04-17 18:49:02,008 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-15
+2026-04-17 18:49:02,027 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-16
+2026-04-17 18:49:02,048 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-17
+2026-04-17 18:49:02,069 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-18
+2026-04-17 18:49:02,088 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-19
+2026-04-17 18:49:02,108 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-20
+2026-04-17 18:49:02,128 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-21
+2026-04-17 18:49:02,147 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-22
+2026-04-17 18:49:02,168 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-23
+2026-04-17 18:49:02,187 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-24
+2026-04-17 18:49:02,207 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-25
+2026-04-17 18:49:02,227 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-26
+2026-04-17 18:49:02,248 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-27
+2026-04-17 18:49:02,268 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-28
+2026-04-17 18:49:02,291 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-29
+2026-04-17 18:49:02,308 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-30
+2026-04-17 18:49:02,330 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-31
+2026-04-17 18:49:02,349 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-32
+2026-04-17 18:49:02,368 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-33
+2026-04-17 18:49:02,389 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-34
+2026-04-17 18:49:02,412 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-35
+2026-04-17 18:49:02,429 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-36
+2026-04-17 18:49:02,448 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-37
+2026-04-17 18:49:02,470 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-38
+2026-04-17 18:49:02,487 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-39
+2026-04-17 18:49:02,507 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-40
+2026-04-17 18:49:02,528 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-41
+2026-04-17 18:49:02,548 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-42
+2026-04-17 18:49:02,569 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-43
+2026-04-17 18:49:02,589 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-44
+2026-04-17 18:49:02,608 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-45
+2026-04-17 18:49:02,630 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-46
+2026-04-17 18:49:02,648 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-47
+2026-04-17 18:49:02,668 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-48
+2026-04-17 18:49:02,687 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-49
+2026-04-17 18:49:02,709 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-50
+2026-04-17 18:49:02,729 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-51
+2026-04-17 18:49:02,748 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-52
+2026-04-17 18:49:02,768 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-53
+2026-04-17 18:49:02,787 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-54
+2026-04-17 18:49:02,807 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-55
+2026-04-17 18:49:02,827 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-56
+2026-04-17 18:49:02,848 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-57
+2026-04-17 18:49:02,867 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-58
+2026-04-17 18:49:02,888 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-59
+2026-04-17 18:49:02,908 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-60
+2026-04-17 18:49:02,929 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-61
+2026-04-17 18:49:02,948 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-62
+2026-04-17 18:49:02,968 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-63
+2026-04-17 18:49:02,988 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-64
+2026-04-17 18:49:03,007 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-65
+2026-04-17 18:49:03,027 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-66
+2026-04-17 18:49:03,047 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-67
+2026-04-17 18:49:03,067 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-68
+2026-04-17 18:49:03,088 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-69
+2026-04-17 18:49:03,108 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-70
+2026-04-17 18:49:03,128 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-71
+2026-04-17 18:49:03,147 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-72
+2026-04-17 18:49:03,155 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = dthibau-XPS-13-7390
+2026-04-17 18:49:03,167 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-04-17 18:49:03,167 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-73
+2026-04-17 18:49:03,187 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-74
+2026-04-17 18:49:03,208 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-75
+2026-04-17 18:49:03,228 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-76
+2026-04-17 18:49:03,248 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-77
+2026-04-17 18:49:03,267 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-78
+2026-04-17 18:49:03,287 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-79
+2026-04-17 18:49:03,310 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-80
+2026-04-17 18:49:03,328 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-81
+2026-04-17 18:49:03,347 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-82
+2026-04-17 18:49:03,372 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-83
+2026-04-17 18:49:03,390 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-84
+2026-04-17 18:49:03,409 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-85
+2026-04-17 18:49:03,428 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-86
+2026-04-17 18:49:03,449 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-87
+2026-04-17 18:49:03,467 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-88
+2026-04-17 18:49:03,487 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-89
+2026-04-17 18:49:03,507 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-90
+2026-04-17 18:49:03,528 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-91
+2026-04-17 18:49:03,547 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-92
+2026-04-17 18:49:03,567 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-93
+2026-04-17 18:49:03,587 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-94
+2026-04-17 18:49:03,607 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-95
+2026-04-17 18:49:03,628 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-96
+2026-04-17 18:49:03,648 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-97
+2026-04-17 18:49:03,668 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-98
+2026-04-17 18:49:03,687 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-99
+2026-04-17 18:49:03,710 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-100
+2026-04-17 18:49:20,219 INFO o.a.j.g.a.Start: Stopping test
+2026-04-17 18:49:20,256 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-18
+2026-04-17 18:49:20,261 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-18 sampler: POST position coursier
+2026-04-17 18:49:20,263 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-37
+2026-04-17 18:49:20,266 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-37 sampler: POST position coursier
+2026-04-17 18:49:20,267 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-5
+2026-04-17 18:49:20,267 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-5 sampler: POST position coursier
+2026-04-17 18:49:20,267 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-16
+2026-04-17 18:49:20,267 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-16 sampler: POST position coursier
+2026-04-17 18:49:20,268 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-53
+2026-04-17 18:49:20,268 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-53 sampler: POST position coursier
+2026-04-17 18:49:20,268 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-13
+2026-04-17 18:49:20,268 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-13 sampler: POST position coursier
+2026-04-17 18:49:20,268 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-9
+2026-04-17 18:49:20,268 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-80
+2026-04-17 18:49:20,269 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-80 sampler: POST position coursier
+2026-04-17 18:49:20,269 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-9
+2026-04-17 18:49:20,269 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-100
+2026-04-17 18:49:20,269 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-100 sampler: POST position coursier
+2026-04-17 18:49:20,282 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-18
+2026-04-17 18:49:20,287 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-25
+2026-04-17 18:49:20,288 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-25 sampler: POST position coursier
+2026-04-17 18:49:20,288 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-75
+2026-04-17 18:49:20,288 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-75 sampler: POST position coursier
+2026-04-17 18:49:20,289 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-3
+2026-04-17 18:49:20,289 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-3 sampler: POST position coursier
+2026-04-17 18:49:20,291 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-75
+2026-04-17 18:49:20,291 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-25
+2026-04-17 18:49:20,294 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-100
+2026-04-17 18:49:20,296 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-94
+2026-04-17 18:49:20,296 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-94 sampler: POST position coursier
+2026-04-17 18:49:20,301 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-3
+2026-04-17 18:49:20,303 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-44
+2026-04-17 18:49:20,304 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-44 sampler: POST position coursier
+2026-04-17 18:49:20,304 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-38
+2026-04-17 18:49:20,304 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-38 sampler: POST position coursier
+2026-04-17 18:49:20,307 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-13
+2026-04-17 18:49:20,311 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-69
+2026-04-17 18:49:20,316 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-52
+2026-04-17 18:49:20,317 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-52 sampler: POST position coursier
+2026-04-17 18:49:20,317 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-69
+2026-04-17 18:49:20,317 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-45
+2026-04-17 18:49:20,317 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-45 sampler: POST position coursier
+2026-04-17 18:49:20,332 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-32
+2026-04-17 18:49:20,333 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-32 sampler: POST position coursier
+2026-04-17 18:49:20,342 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-46
+2026-04-17 18:49:20,342 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-54
+2026-04-17 18:49:20,343 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-54 sampler: POST position coursier
+2026-04-17 18:49:20,343 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-92
+2026-04-17 18:49:20,343 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-97
+2026-04-17 18:49:20,343 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-97 sampler: POST position coursier
+2026-04-17 18:49:20,343 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-58
+2026-04-17 18:49:20,344 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-58 sampler: POST position coursier
+2026-04-17 18:49:20,344 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-66
+2026-04-17 18:49:20,344 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-66 sampler: POST position coursier
+2026-04-17 18:49:20,344 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-96
+2026-04-17 18:49:20,344 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-96 sampler: POST position coursier
+2026-04-17 18:49:20,345 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-41
+2026-04-17 18:49:20,345 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-34
+2026-04-17 18:49:20,345 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-34 sampler: POST position coursier
+2026-04-17 18:49:20,350 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-76
+2026-04-17 18:49:20,350 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-48
+2026-04-17 18:49:20,351 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-48 sampler: POST position coursier
+2026-04-17 18:49:20,351 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-89
+2026-04-17 18:49:20,351 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-65
+2026-04-17 18:49:20,351 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-64
+2026-04-17 18:49:20,351 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-19
+2026-04-17 18:49:20,351 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-81
+2026-04-17 18:49:20,351 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-34
+2026-04-17 18:49:20,352 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-76
+2026-04-17 18:49:20,352 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-65
+2026-04-17 18:49:20,354 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-48
+2026-04-17 18:49:20,352 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-81 sampler: POST position coursier
+2026-04-17 18:49:20,355 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-31
+2026-04-17 18:49:20,356 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-31 sampler: POST position coursier
+2026-04-17 18:49:20,356 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-79
+2026-04-17 18:49:20,356 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-33
+2026-04-17 18:49:20,356 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-33 sampler: POST position coursier
+2026-04-17 18:49:20,356 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-17
+2026-04-17 18:49:20,357 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-17 sampler: POST position coursier
+2026-04-17 18:49:20,357 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-57
+2026-04-17 18:49:20,357 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-57 sampler: POST position coursier
+2026-04-17 18:49:20,357 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-99
+2026-04-17 18:49:20,357 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-10
+2026-04-17 18:49:20,358 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-6
+2026-04-17 18:49:20,358 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-6 sampler: POST position coursier
+2026-04-17 18:49:20,358 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-10
+2026-04-17 18:49:20,358 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-62
+2026-04-17 18:49:20,358 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-79
+2026-04-17 18:49:20,359 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-6
+2026-04-17 18:49:20,361 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-17
+2026-04-17 18:49:20,361 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-81
+2026-04-17 18:49:20,362 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-33
+2026-04-17 18:49:20,363 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-99
+2026-04-17 18:49:20,364 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-58
+2026-04-17 18:49:20,358 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-62 sampler: POST position coursier
+2026-04-17 18:49:20,364 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-2
+2026-04-17 18:49:20,365 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-2 sampler: POST position coursier
+2026-04-17 18:49:20,365 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-29
+2026-04-17 18:49:20,365 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-47
+2026-04-17 18:49:20,365 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-12
+2026-04-17 18:49:20,366 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-12 sampler: POST position coursier
+2026-04-17 18:49:20,366 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-15
+2026-04-17 18:49:20,366 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-15 sampler: POST position coursier
+2026-04-17 18:49:20,366 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-61
+2026-04-17 18:49:20,366 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-61 sampler: POST position coursier
+2026-04-17 18:49:20,367 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-20
+2026-04-17 18:49:20,367 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-20 sampler: POST position coursier
+2026-04-17 18:49:20,367 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-14
+2026-04-17 18:49:20,367 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-7
+2026-04-17 18:49:20,368 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-7 sampler: POST position coursier
+2026-04-17 18:49:20,368 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-87
+2026-04-17 18:49:20,368 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-91
+2026-04-17 18:49:20,369 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-91 sampler: POST position coursier
+2026-04-17 18:49:20,369 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-37
+2026-04-17 18:49:20,369 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-30
+2026-04-17 18:49:20,369 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-43
+2026-04-17 18:49:20,369 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-43 sampler: POST position coursier
+2026-04-17 18:49:20,369 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-8
+2026-04-17 18:49:20,370 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-8 sampler: POST position coursier
+2026-04-17 18:49:20,370 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-49
+2026-04-17 18:49:20,370 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-49 sampler: POST position coursier
+2026-04-17 18:49:20,370 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-83
+2026-04-17 18:49:20,370 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-84
+2026-04-17 18:49:20,370 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-68
+2026-04-17 18:49:20,371 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-55
+2026-04-17 18:49:20,371 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-55 sampler: POST position coursier
+2026-04-17 18:49:20,371 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-59
+2026-04-17 18:49:20,371 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-59 sampler: POST position coursier
+2026-04-17 18:49:20,371 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-85
+2026-04-17 18:49:20,372 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-85 sampler: POST position coursier
+2026-04-17 18:49:20,372 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-39
+2026-04-17 18:49:20,372 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-39 sampler: POST position coursier
+2026-04-17 18:49:20,373 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-74
+2026-04-17 18:49:20,373 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-42
+2026-04-17 18:49:20,373 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-42 sampler: POST position coursier
+2026-04-17 18:49:20,373 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-36
+2026-04-17 18:49:20,375 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-57
+2026-04-17 18:49:20,375 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-36 sampler: POST position coursier
+2026-04-17 18:49:20,376 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-68
+2026-04-17 18:49:20,376 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-28
+2026-04-17 18:49:20,376 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-8
+2026-04-17 18:49:20,376 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-28 sampler: POST position coursier
+2026-04-17 18:49:20,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-72
+2026-04-17 18:49:20,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-72 sampler: POST position coursier
+2026-04-17 18:49:20,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-93
+2026-04-17 18:49:20,377 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-80
+2026-04-17 18:49:20,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-93 sampler: POST position coursier
+2026-04-17 18:49:20,379 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-51
+2026-04-17 18:49:20,379 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-4
+2026-04-17 18:49:20,379 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-67
+2026-04-17 18:49:20,379 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-67 sampler: POST position coursier
+2026-04-17 18:49:20,380 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-11
+2026-04-17 18:49:20,380 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-11 sampler: POST position coursier
+2026-04-17 18:49:20,380 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-50
+2026-04-17 18:49:20,381 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-50 sampler: POST position coursier
+2026-04-17 18:49:20,381 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-77
+2026-04-17 18:49:20,381 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-77 sampler: POST position coursier
+2026-04-17 18:49:20,381 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-95
+2026-04-17 18:49:20,382 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-82
+2026-04-17 18:49:20,382 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-43
+2026-04-17 18:49:20,382 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-73
+2026-04-17 18:49:20,382 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-73 sampler: POST position coursier
+2026-04-17 18:49:20,382 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-21
+2026-04-17 18:49:20,382 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-82
+2026-04-17 18:49:20,382 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-21 sampler: POST position coursier
+2026-04-17 18:49:20,383 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-88
+2026-04-17 18:49:20,383 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-71
+2026-04-17 18:49:20,383 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-71 sampler: POST position coursier
+2026-04-17 18:49:20,383 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-98
+2026-04-17 18:49:20,384 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-63
+2026-04-17 18:49:20,384 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-26
+2026-04-17 18:49:20,384 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-56
+2026-04-17 18:49:20,384 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-27
+2026-04-17 18:49:20,384 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-27 sampler: POST position coursier
+2026-04-17 18:49:20,384 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-70
+2026-04-17 18:49:20,385 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-70 sampler: POST position coursier
+2026-04-17 18:49:20,385 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-22
+2026-04-17 18:49:20,374 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-12
+2026-04-17 18:49:20,385 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-23
+2026-04-17 18:49:20,385 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-23 sampler: POST position coursier
+2026-04-17 18:49:20,386 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-53
+2026-04-17 18:49:20,386 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-60
+2026-04-17 18:49:20,386 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-1
+2026-04-17 18:49:20,386 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-86
+2026-04-17 18:49:20,386 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-86 sampler: POST position coursier
+2026-04-17 18:49:20,386 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-24
+2026-04-17 18:49:20,387 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-90
+2026-04-17 18:49:20,387 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-35
+2026-04-17 18:49:20,388 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-35 sampler: POST position coursier
+2026-04-17 18:49:20,388 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-40
+2026-04-17 18:49:20,388 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-78
+2026-04-17 18:49:20,378 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-42
+2026-04-17 18:49:20,389 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-78 sampler: POST position coursier
+2026-04-17 18:49:20,378 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-91
+2026-04-17 18:49:20,409 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-5
+2026-04-17 18:49:20,409 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-96
+2026-04-17 18:49:20,409 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-90
+2026-04-17 18:49:20,410 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-28
+2026-04-17 18:49:20,412 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-97
+2026-04-17 18:49:20,412 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-63
+2026-04-17 18:49:20,413 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-32
+2026-04-17 18:49:20,413 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-29
+2026-04-17 18:49:20,414 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-4
+2026-04-17 18:49:20,415 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-83
+2026-04-17 18:49:20,416 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-60
+2026-04-17 18:49:20,416 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-95
+2026-04-17 18:49:20,417 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-84
+2026-04-17 18:49:20,418 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-98
+2026-04-17 18:49:20,419 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-52
+2026-04-17 18:49:20,419 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-89
+2026-04-17 18:49:20,420 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-14
+2026-04-17 18:49:20,420 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-41
+2026-04-17 18:49:20,422 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-54
+2026-04-17 18:49:20,423 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-40
+2026-04-17 18:49:20,423 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-47
+2026-04-17 18:49:20,426 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-26
+2026-04-17 18:49:20,429 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-46
+2026-04-17 18:49:20,426 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-1
+2026-04-17 18:49:20,434 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-92
+2026-04-17 18:49:20,435 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-30
+2026-04-17 18:49:20,437 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-45
+2026-04-17 18:49:20,439 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-87
+2026-04-17 18:49:20,440 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-64
+2026-04-17 18:49:20,442 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-74
+2026-04-17 18:49:20,441 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-51
+2026-04-17 18:49:20,438 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-19
+2026-04-17 18:49:20,438 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-16
+2026-04-17 18:49:20,448 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-24
+2026-04-17 18:49:20,449 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-56
+2026-04-17 18:49:20,438 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-94
+2026-04-17 18:49:20,455 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-44
+2026-04-17 18:49:20,456 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-21
+2026-04-17 18:49:20,456 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-86
+2026-04-17 18:49:20,460 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-35
+2026-04-17 18:49:20,461 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-27
+2026-04-17 18:49:20,462 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-39
+2026-04-17 18:49:20,464 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-59
+2026-04-17 18:49:20,467 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-93
+2026-04-17 18:49:20,469 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-66
+2026-04-17 18:49:20,470 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-15
+2026-04-17 18:49:20,470 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-85
+2026-04-17 18:49:20,468 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-11
+2026-04-17 18:49:20,472 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-62
+2026-04-17 18:49:20,472 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-77
+2026-04-17 18:49:20,472 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-67
+2026-04-17 18:49:20,473 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-71
+2026-04-17 18:49:20,473 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-78
+2026-04-17 18:49:20,475 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-73
+2026-04-17 18:49:20,475 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-50
+2026-04-17 18:49:20,475 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-36
+2026-04-17 18:49:20,475 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-20
+2026-04-17 18:49:20,476 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-31
+2026-04-17 18:49:20,479 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-7
+2026-04-17 18:49:20,479 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-55
+2026-04-17 18:49:20,480 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-70
+2026-04-17 18:49:20,480 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-23
+2026-04-17 18:49:20,482 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-49
+2026-04-17 18:49:20,482 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-72
+2026-04-17 18:49:20,483 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-38
+2026-04-17 18:49:20,483 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-88
+2026-04-17 18:49:20,483 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-2
+2026-04-17 18:49:20,484 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-22
+2026-04-17 18:49:20,484 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-61
+2026-04-17 18:49:20,484 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-04-17 18:49:20,491 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)
+2026-04-19 18:19:30,459 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-04-19 18:19:30,507 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-04-19 18:19:30,533 INFO o.a.j.g.u.JMeterMenuBar: setRunning(true, *local*)
+2026-04-19 18:19:31,373 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Coursiers
+2026-04-19 18:19:31,378 INFO o.a.j.e.StandardJMeterEngine: Starting 100 threads for group Coursiers.
+2026-04-19 18:19:31,378 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-04-19 18:19:31,378 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=100 ramp-up=2 delayedStart=false
+2026-04-19 18:19:31,390 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-1
+2026-04-19 18:19:31,410 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-2
+2026-04-19 18:19:31,434 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-3
+2026-04-19 18:19:31,442 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-4
+2026-04-19 18:19:31,464 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-5
+2026-04-19 18:19:31,486 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-6
+2026-04-19 18:19:31,509 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-7
+2026-04-19 18:19:31,529 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-8
+2026-04-19 18:19:31,543 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-9
+2026-04-19 18:19:31,563 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-10
+2026-04-19 18:19:31,584 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-11
+2026-04-19 18:19:31,607 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-12
+2026-04-19 18:19:31,625 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-13
+2026-04-19 18:19:31,651 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-14
+2026-04-19 18:19:31,668 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-15
+2026-04-19 18:19:31,686 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-16
+2026-04-19 18:19:31,704 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-17
+2026-04-19 18:19:31,724 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-18
+2026-04-19 18:19:31,748 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-19
+2026-04-19 18:19:31,776 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-20
+2026-04-19 18:19:31,806 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-22
+2026-04-19 18:19:31,833 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-23
+2026-04-19 18:19:31,857 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-24
+2026-04-19 18:19:31,851 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-21
+2026-04-19 18:19:31,875 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-25
+2026-04-19 18:19:31,892 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-26
+2026-04-19 18:19:31,902 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-27
+2026-04-19 18:19:31,927 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-28
+2026-04-19 18:19:31,944 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-29
+2026-04-19 18:19:31,952 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-04-19 18:19:31,953 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-04-19 18:19:31,963 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-30
+2026-04-19 18:19:31,981 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-31
+2026-04-19 18:19:32,006 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-32
+2026-04-19 18:19:32,022 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-33
+2026-04-19 18:19:32,042 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-34
+2026-04-19 18:19:32,065 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-35
+2026-04-19 18:19:32,087 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-36
+2026-04-19 18:19:32,102 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-37
+2026-04-19 18:19:32,124 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-38
+2026-04-19 18:19:32,147 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-39
+2026-04-19 18:19:32,160 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-40
+2026-04-19 18:19:32,181 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-41
+2026-04-19 18:19:32,211 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-42
+2026-04-19 18:19:32,231 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-43
+2026-04-19 18:19:32,241 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-44
+2026-04-19 18:19:32,266 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-45
+2026-04-19 18:19:32,289 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-46
+2026-04-19 18:19:32,308 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-47
+2026-04-19 18:19:32,325 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-48
+2026-04-19 18:19:32,346 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-49
+2026-04-19 18:19:32,364 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-50
+2026-04-19 18:19:32,384 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-51
+2026-04-19 18:19:32,401 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-52
+2026-04-19 18:19:32,428 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-53
+2026-04-19 18:19:32,449 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-54
+2026-04-19 18:19:32,468 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-55
+2026-04-19 18:19:32,484 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-56
+2026-04-19 18:19:32,504 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-57
+2026-04-19 18:19:32,528 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-58
+2026-04-19 18:19:32,542 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-59
+2026-04-19 18:19:32,564 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-60
+2026-04-19 18:19:32,582 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-61
+2026-04-19 18:19:32,603 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-62
+2026-04-19 18:19:32,625 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-63
+2026-04-19 18:19:32,644 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-64
+2026-04-19 18:19:32,666 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-65
+2026-04-19 18:19:32,690 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-66
+2026-04-19 18:19:32,707 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-67
+2026-04-19 18:19:32,728 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-68
+2026-04-19 18:19:32,747 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-69
+2026-04-19 18:19:32,764 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-70
+2026-04-19 18:19:32,788 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-71
+2026-04-19 18:19:32,808 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-72
+2026-04-19 18:19:32,829 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-73
+2026-04-19 18:19:32,851 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-74
+2026-04-19 18:19:32,873 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-75
+2026-04-19 18:19:32,885 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-76
+2026-04-19 18:19:32,905 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-77
+2026-04-19 18:19:32,930 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-78
+2026-04-19 18:19:32,946 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-79
+2026-04-19 18:19:32,966 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-80
+2026-04-19 18:19:32,980 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-81
+2026-04-19 18:19:33,005 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-82
+2026-04-19 18:19:33,028 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-83
+2026-04-19 18:19:33,044 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-84
+2026-04-19 18:19:33,064 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-85
+2026-04-19 18:19:33,081 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-86
+2026-04-19 18:19:33,106 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-87
+2026-04-19 18:19:33,124 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-88
+2026-04-19 18:19:33,142 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-89
+2026-04-19 18:19:33,163 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-90
+2026-04-19 18:19:33,182 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-91
+2026-04-19 18:19:33,204 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-92
+2026-04-19 18:19:33,238 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-93
+2026-04-19 18:19:33,245 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-94
+2026-04-19 18:19:33,270 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-95
+2026-04-19 18:19:33,286 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-96
+2026-04-19 18:19:33,306 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-97
+2026-04-19 18:19:33,322 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-98
+2026-04-19 18:19:33,342 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-99
+2026-04-19 18:19:33,363 INFO o.a.j.t.JMeterThread: Thread started: Coursiers 1-100
+2026-04-19 18:32:42,246 INFO o.a.j.g.a.Start: Stopping test
+2026-04-19 18:32:42,309 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-70
+2026-04-19 18:32:42,312 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-70 sampler: POST position coursier
+2026-04-19 18:32:42,314 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-11
+2026-04-19 18:32:42,314 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-11 sampler: POST position coursier
+2026-04-19 18:32:42,315 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-20
+2026-04-19 18:32:42,315 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-20 sampler: POST position coursier
+2026-04-19 18:32:42,315 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-53
+2026-04-19 18:32:42,316 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-53 sampler: POST position coursier
+2026-04-19 18:32:42,317 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-71
+2026-04-19 18:32:42,317 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-71 sampler: POST position coursier
+2026-04-19 18:32:42,317 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-80
+2026-04-19 18:32:42,317 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-80 sampler: POST position coursier
+2026-04-19 18:32:42,317 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-38
+2026-04-19 18:32:42,317 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-38 sampler: POST position coursier
+2026-04-19 18:32:42,317 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-87
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-87 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-14
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-14 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-50
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-50 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-4
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-4 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-96
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-96 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-22
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-22 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-74
+2026-04-19 18:32:42,318 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-74 sampler: POST position coursier
+2026-04-19 18:32:42,318 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-25
+2026-04-19 18:32:42,319 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-25 sampler: POST position coursier
+2026-04-19 18:32:42,319 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-13
+2026-04-19 18:32:42,319 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-13 sampler: POST position coursier
+2026-04-19 18:32:42,319 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-5
+2026-04-19 18:32:42,319 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-5 sampler: POST position coursier
+2026-04-19 18:32:42,319 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-79
+2026-04-19 18:32:42,328 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-79 sampler: POST position coursier
+2026-04-19 18:32:42,328 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-6
+2026-04-19 18:32:42,328 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-6 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-91
+2026-04-19 18:32:42,329 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-91 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-85
+2026-04-19 18:32:42,329 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-85 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-46
+2026-04-19 18:32:42,329 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-46 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-97
+2026-04-19 18:32:42,329 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-97 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-33
+2026-04-19 18:32:42,329 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-33 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-95
+2026-04-19 18:32:42,329 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-95 sampler: POST position coursier
+2026-04-19 18:32:42,329 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-62
+2026-04-19 18:32:42,330 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-62 sampler: POST position coursier
+2026-04-19 18:32:42,330 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-82
+2026-04-19 18:32:42,330 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-82 sampler: POST position coursier
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-24
+2026-04-19 18:32:42,333 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-24 sampler: POST position coursier
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-30
+2026-04-19 18:32:42,333 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-30 sampler: POST position coursier
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-3
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-51
+2026-04-19 18:32:42,333 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-51 sampler: POST position coursier
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-100
+2026-04-19 18:32:42,333 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-100 sampler: POST position coursier
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-77
+2026-04-19 18:32:42,333 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-3
+2026-04-19 18:32:42,333 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-77 sampler: POST position coursier
+2026-04-19 18:32:42,335 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-42
+2026-04-19 18:32:42,335 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-42 sampler: POST position coursier
+2026-04-19 18:32:42,335 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-84
+2026-04-19 18:32:42,335 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-84 sampler: POST position coursier
+2026-04-19 18:32:42,335 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-12
+2026-04-19 18:32:42,335 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-12 sampler: POST position coursier
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-100
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-33
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-77
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-42
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-5
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-79
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-30
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-82
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-96
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-39
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-91
+2026-04-19 18:32:42,337 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-39 sampler: POST position coursier
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-95
+2026-04-19 18:32:42,338 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-97
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-24
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-20
+2026-04-19 18:32:42,338 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-12
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-22
+2026-04-19 18:32:42,338 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-92
+2026-04-19 18:32:42,338 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-65
+2026-04-19 18:32:42,338 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-92
+2026-04-19 18:32:42,338 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-65 sampler: POST position coursier
+2026-04-19 18:32:42,338 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-87
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-50
+2026-04-19 18:32:42,339 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-39
+2026-04-19 18:32:42,339 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-46
+2026-04-19 18:32:42,339 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-62
+2026-04-19 18:32:42,340 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-13
+2026-04-19 18:32:42,340 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-70
+2026-04-19 18:32:42,341 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-51
+2026-04-19 18:32:42,341 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-85
+2026-04-19 18:32:42,342 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-38
+2026-04-19 18:32:42,342 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-6
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-4
+2026-04-19 18:32:42,345 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-25
+2026-04-19 18:32:42,346 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-71
+2026-04-19 18:32:42,349 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-80
+2026-04-19 18:32:42,337 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-84
+2026-04-19 18:32:42,348 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-74
+2026-04-19 18:32:42,336 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-53
+2026-04-19 18:32:42,346 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-11
+2026-04-19 18:32:42,350 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-14
+2026-04-19 18:32:42,368 WARN o.a.j.t.JMeterThread: No operation pending
+2026-04-19 18:32:42,368 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-1
+2026-04-19 18:32:42,368 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-1 sampler: POST position coursier
+2026-04-19 18:32:42,368 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-65
+2026-04-19 18:32:42,368 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-81
+2026-04-19 18:32:42,376 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-81 sampler: POST position coursier
+2026-04-19 18:32:42,376 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-66
+2026-04-19 18:32:42,376 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-66 sampler: POST position coursier
+2026-04-19 18:32:42,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-58
+2026-04-19 18:32:42,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-58 sampler: POST position coursier
+2026-04-19 18:32:42,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-73
+2026-04-19 18:32:42,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-73 sampler: POST position coursier
+2026-04-19 18:32:42,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-89
+2026-04-19 18:32:42,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-89 sampler: POST position coursier
+2026-04-19 18:32:42,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-9
+2026-04-19 18:32:42,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-9 sampler: POST position coursier
+2026-04-19 18:32:42,377 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-29
+2026-04-19 18:32:42,377 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-29 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-17
+2026-04-19 18:32:42,378 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-17 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-59
+2026-04-19 18:32:42,378 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-59 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-15
+2026-04-19 18:32:42,378 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-15 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-56
+2026-04-19 18:32:42,378 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-56 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-36
+2026-04-19 18:32:42,378 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-36 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-35
+2026-04-19 18:32:42,378 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-35 sampler: POST position coursier
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-89
+2026-04-19 18:32:42,378 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-15
+2026-04-19 18:32:42,379 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-1
+2026-04-19 18:32:42,381 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-29
+2026-04-19 18:32:42,382 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-73
+2026-04-19 18:32:42,382 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-58
+2026-04-19 18:32:42,389 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-17
+2026-04-19 18:32:42,391 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-66
+2026-04-19 18:32:42,391 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-9
+2026-04-19 18:32:42,388 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-59
+2026-04-19 18:32:42,397 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-56
+2026-04-19 18:32:42,386 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-36
+2026-04-19 18:32:42,408 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-27
+2026-04-19 18:32:42,409 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-27 sampler: POST position coursier
+2026-04-19 18:32:42,409 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-28
+2026-04-19 18:32:42,409 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-28 sampler: POST position coursier
+2026-04-19 18:32:42,409 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-34
+2026-04-19 18:32:42,410 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-34 sampler: POST position coursier
+2026-04-19 18:32:42,410 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-72
+2026-04-19 18:32:42,410 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-72 sampler: POST position coursier
+2026-04-19 18:32:42,410 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-81
+2026-04-19 18:32:42,412 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-99
+2026-04-19 18:32:42,412 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-99 sampler: POST position coursier
+2026-04-19 18:32:42,412 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-45
+2026-04-19 18:32:42,412 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-45 sampler: POST position coursier
+2026-04-19 18:32:42,412 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-37
+2026-04-19 18:32:42,412 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-37 sampler: POST position coursier
+2026-04-19 18:32:42,412 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-64
+2026-04-19 18:32:42,412 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-64 sampler: POST position coursier
+2026-04-19 18:32:42,416 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-35
+2026-04-19 18:32:42,416 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-37
+2026-04-19 18:32:42,417 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-34
+2026-04-19 18:32:42,417 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-32
+2026-04-19 18:32:42,417 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-48
+2026-04-19 18:32:42,418 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-48 sampler: POST position coursier
+2026-04-19 18:32:42,418 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-32
+2026-04-19 18:32:42,418 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-69
+2026-04-19 18:32:42,419 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-69 sampler: POST position coursier
+2026-04-19 18:32:42,419 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-21
+2026-04-19 18:32:42,419 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-21 sampler: POST position coursier
+2026-04-19 18:32:42,419 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-61
+2026-04-19 18:32:42,419 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-54
+2026-04-19 18:32:42,419 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-61
+2026-04-19 18:32:42,420 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-54 sampler: POST position coursier
+2026-04-19 18:32:42,420 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-26
+2026-04-19 18:32:42,420 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-26 sampler: POST position coursier
+2026-04-19 18:32:42,420 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-60
+2026-04-19 18:32:42,420 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-60 sampler: POST position coursier
+2026-04-19 18:32:42,420 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-93
+2026-04-19 18:32:42,420 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-93 sampler: POST position coursier
+2026-04-19 18:32:42,420 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-40
+2026-04-19 18:32:42,420 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-40 sampler: POST position coursier
+2026-04-19 18:32:42,421 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-10
+2026-04-19 18:32:42,421 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-10 sampler: POST position coursier
+2026-04-19 18:32:42,422 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-41
+2026-04-19 18:32:42,422 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-41 sampler: POST position coursier
+2026-04-19 18:32:42,422 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-55
+2026-04-19 18:32:42,422 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-55 sampler: POST position coursier
+2026-04-19 18:32:42,423 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-16
+2026-04-19 18:32:42,423 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-16 sampler: POST position coursier
+2026-04-19 18:32:42,423 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-94
+2026-04-19 18:32:42,423 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-94 sampler: POST position coursier
+2026-04-19 18:32:42,423 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-2
+2026-04-19 18:32:42,423 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-2 sampler: POST position coursier
+2026-04-19 18:32:42,423 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-18
+2026-04-19 18:32:42,423 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-18 sampler: POST position coursier
+2026-04-19 18:32:42,423 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-90
+2026-04-19 18:32:42,423 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-90 sampler: POST position coursier
+2026-04-19 18:32:42,423 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-75
+2026-04-19 18:32:42,423 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-75 sampler: POST position coursier
+2026-04-19 18:32:42,424 WARN o.a.j.t.JMeterThread: No operation pending
+2026-04-19 18:32:42,424 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-88
+2026-04-19 18:32:42,424 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-88 sampler: POST position coursier
+2026-04-19 18:32:42,424 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-67
+2026-04-19 18:32:42,424 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-67 sampler: POST position coursier
+2026-04-19 18:32:42,424 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-47
+2026-04-19 18:32:42,424 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-47 sampler: POST position coursier
+2026-04-19 18:32:42,424 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-69
+2026-04-19 18:32:42,424 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-98
+2026-04-19 18:32:42,424 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-98 sampler: POST position coursier
+2026-04-19 18:32:42,425 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-47
+2026-04-19 18:32:42,425 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-41
+2026-04-19 18:32:42,427 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-94
+2026-04-19 18:32:42,428 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-21
+2026-04-19 18:32:42,429 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-60
+2026-04-19 18:32:42,429 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-18
+2026-04-19 18:32:42,428 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-27
+2026-04-19 18:32:42,427 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-55
+2026-04-19 18:32:42,430 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-28
+2026-04-19 18:32:42,431 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-98
+2026-04-19 18:32:42,427 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-88
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-54
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-8
+2026-04-19 18:32:42,432 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-8 sampler: POST position coursier
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-19
+2026-04-19 18:32:42,432 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-19 sampler: POST position coursier
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-76
+2026-04-19 18:32:42,432 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-76 sampler: POST position coursier
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-44
+2026-04-19 18:32:42,432 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-44 sampler: POST position coursier
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-7
+2026-04-19 18:32:42,433 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-7 sampler: POST position coursier
+2026-04-19 18:32:42,433 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-45
+2026-04-19 18:32:42,433 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-19
+2026-04-19 18:32:42,436 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-83
+2026-04-19 18:32:42,436 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-83 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-78
+2026-04-19 18:32:42,432 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-75
+2026-04-19 18:32:42,437 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-78 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-63
+2026-04-19 18:32:42,437 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-63 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-52
+2026-04-19 18:32:42,437 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-52 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-23
+2026-04-19 18:32:42,437 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-23 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-43
+2026-04-19 18:32:42,437 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-43 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-57
+2026-04-19 18:32:42,437 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-57 sampler: POST position coursier
+2026-04-19 18:32:42,437 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-83
+2026-04-19 18:32:42,438 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-86
+2026-04-19 18:32:42,438 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-86 sampler: POST position coursier
+2026-04-19 18:32:42,438 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-68
+2026-04-19 18:32:42,438 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-68 sampler: POST position coursier
+2026-04-19 18:32:42,438 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-31
+2026-04-19 18:32:42,438 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-76
+2026-04-19 18:32:42,438 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-31 sampler: POST position coursier
+2026-04-19 18:32:42,438 INFO o.a.j.t.JMeterThread: Stopping: Coursiers 1-49
+2026-04-19 18:32:42,438 WARN o.a.j.t.JMeterThread: Interrupting: Coursiers 1-49 sampler: POST position coursier
+2026-04-19 18:32:42,427 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-93
+2026-04-19 18:32:42,440 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-23
+2026-04-19 18:32:42,441 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-7
+2026-04-19 18:32:42,441 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-68
+2026-04-19 18:32:42,427 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-16
+2026-04-19 18:32:42,442 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-43
+2026-04-19 18:32:42,439 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-52
+2026-04-19 18:32:42,442 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-78
+2026-04-19 18:32:42,443 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-86
+2026-04-19 18:32:42,445 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-49
+2026-04-19 18:32:42,446 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-31
+2026-04-19 18:32:42,447 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-63
+2026-04-19 18:32:42,448 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-44
+2026-04-19 18:32:42,448 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-8
+2026-04-19 18:32:42,453 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-72
+2026-04-19 18:32:42,457 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-99
+2026-04-19 18:32:42,461 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-48
+2026-04-19 18:32:42,464 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-10
+2026-04-19 18:32:42,462 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-26
+2026-04-19 18:32:42,473 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-40
+2026-04-19 18:32:42,475 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-90
+2026-04-19 18:32:42,476 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-2
+2026-04-19 18:32:42,477 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-57
+2026-04-19 18:32:42,478 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-64
+2026-04-19 18:32:42,479 INFO o.a.j.t.JMeterThread: Thread finished: Coursiers 1-67
+2026-04-19 18:32:42,482 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-04-19 18:32:42,492 INFO o.a.j.g.u.JMeterMenuBar: setRunning(false, *local*)

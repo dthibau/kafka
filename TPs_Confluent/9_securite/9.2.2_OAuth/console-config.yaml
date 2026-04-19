@@ -1,0 +1,13 @@
+kafka:
+  brokers:
+    - kafka-0:9092
+    - kafka-1:9092
+    - kafka-2:9092
+
+schemaRegistry:
+  enabled: true
+  urls:
+    - http://schema-registry:8085
+
+server:
+  listenPort: 8080

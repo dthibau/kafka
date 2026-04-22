@@ -44,7 +44,7 @@ services:
       KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
       KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
       KAFKA_SSL_CLIENT_AUTH: requested
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
 
       KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
       KAFKA_SUPER_USERS: "User:admin"
@@ -106,7 +106,7 @@ services:
       KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
       KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
       KAFKA_SSL_CLIENT_AUTH: requested
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
 
       KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
       KAFKA_SUPER_USERS: "User:admin"
@@ -168,7 +168,7 @@ services:
       KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
       KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
       KAFKA_SSL_CLIENT_AUTH: requested
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
 
       KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
       KAFKA_SUPER_USERS: "User:admin"
@@ -207,7 +207,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";'
       SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8081"
       SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
-      SCHEMA_REGISTRY_RESOURCE_EXTENSION_CLASS: "io.confluent.kafka.schemaregistry.rulehandler.RuleSetResourceExtension"l
+      SCHEMA_REGISTRY_RESOURCE_EXTENSION_CLASS: "io.confluent.kafka.schemaregistry.rulehandler.RuleSetResourceExtension,io.confluent.dekregistry.DekRegistryResourceExtension"
     networks:
       - kafka-cluster
     healthcheck:
@@ -258,51 +258,6 @@ services:
       timeout: 10s
       retries: 10
 
-  ksqldb-server:
-    image: confluentinc/ksqldb-server:0.29.0
-    hostname: ksqldb-server
-    container_name: ksqldb-server
-    depends_on:
-      kafka-1:
-        condition: service_healthy
-      kafka-2:
-        condition: service_healthy
-      kafka-3:
-        condition: service_healthy
-      schema-registry:
-        condition: service_healthy
-    ports:
-      - "8088:8088"
-    environment:
-      KSQL_BOOTSTRAP_SERVERS: "kafka-1:9092,kafka-2:9092,kafka-3:9092"
-      KSQL_SECURITY_PROTOCOL: SASL_PLAINTEXT
-      KSQL_SASL_MECHANISM: PLAIN
-      KSQL_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";'
-      KSQL_KSQL_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
-      KSQL_LISTENERS: "http://0.0.0.0:8088"
-      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
-      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"
-      KSQL_KSQL_SERVICE_ID: "ksql_confluent_dev_"
-      KSQL_KSQL_STREAMS_AUTO_OFFSET_RESET: "earliest"
-    networks:
-      - kafka-cluster
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8088/info"]
-      interval: 10s
-      timeout: 10s
-      retries: 15
-
-  ksqldb-cli:
-    image: confluentinc/ksqldb-cli:0.29.0
-    container_name: ksqldb-cli
-    depends_on:
-      ksqldb-server:
-        condition: service_healthy
-    entrypoint: /bin/sh
-    tty: true
-    networks:
-      - kafka-cluster
-
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.7.8
     hostname: control-center
@@ -315,8 +270,6 @@ services:
       CONTROL_CENTER_STREAMS_SASL_MECHANISM: PLAIN
       CONTROL_CENTER_STREAMS_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";'
       CONTROL_CENTER_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
-      CONTROL_CENTER_KSQL_KSQLDB1_URL: "http://ksqldb-server:8088"
-      CONTROL_CENTER_KSQL_KSQLDB1_ADVERTISED_URL: "http://localhost:8088"
       CONTROL_CENTER_REPLICATION_FACTOR: 3
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 3
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 3
@@ -327,7 +280,6 @@ services:
       - kafka-2
       - kafka-3
       - schema-registry
-      - ksqldb-server
     networks:
       - kafka-cluster
 

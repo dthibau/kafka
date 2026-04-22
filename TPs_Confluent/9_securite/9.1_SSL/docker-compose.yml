@@ -31,8 +31,8 @@ services:
       KAFKA_SSL_KEY_CREDENTIALS: 'secret'
       KAFKA_SSL_TRUSTSTORE_FILENAME: 'kafka.truststore.jks'
       KAFKA_SSL_TRUSTSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_CLIENT_AUTH: 'none'
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
+      KAFKA_SSL_CLIENT_AUTH: requested
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
     volumes:
       - ./ssl/mount:/etc/kafka/secrets
 

@@ -46,6 +46,10 @@ services:
       KAFKA_SSL_CLIENT_AUTH: requested
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
 
+      KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
+      KAFKA_SUPER_USERS: "User:admin"
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_jaas.conf"
     volumes:
       - ./ssl/mount:/etc/kafka/secrets
@@ -103,6 +107,10 @@ services:
       KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
       KAFKA_SSL_CLIENT_AUTH: requested
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
+
+      KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
+      KAFKA_SUPER_USERS: "User:admin"
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
 
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_jaas.conf"
     volumes:
@@ -162,6 +170,10 @@ services:
       KAFKA_SSL_CLIENT_AUTH: requested
       KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
 
+      KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
+      KAFKA_SUPER_USERS: "User:admin"
+      KAFKA_ALLOW_EVERYONE_IF_NO_ACL_FOUND: "true"
+
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_jaas.conf"
     volumes:
       - ./ssl/mount:/etc/kafka/secrets
@@ -195,6 +207,7 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.plain.PlainLoginModule required username="admin" password="admin-secret";'
       SCHEMA_REGISTRY_LISTENERS: "http://0.0.0.0:8081"
       SCHEMA_REGISTRY_KAFKASTORE_TOPIC_REPLICATION_FACTOR: 3
+      SCHEMA_REGISTRY_RESOURCE_EXTENSION_CLASS: "io.confluent.kafka.schemaregistry.rulehandler.RuleSetResourceExtension"l
     networks:
       - kafka-cluster
     healthcheck:
@@ -348,6 +361,27 @@ services:
       - schema-registry
     networks:
       - kafka-cluster
+
+  vault:
+    image: hashicorp/vault:1.17
+    container_name: vault
+    hostname: vault
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_DEV_ROOT_TOKEN_ID: "root-token-atelier"
+      VAULT_DEV_LISTEN_ADDRESS: "0.0.0.0:8200"
+      VAULT_ADDR: "http://0.0.0.0:8200"
+    cap_add:
+      - IPC_LOCK
+    command: server -dev
+    networks:
+      - kafka-cluster
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8200/v1/sys/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
 networks:
   kafka-cluster:

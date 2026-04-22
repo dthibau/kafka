@@ -38,13 +38,13 @@ services:
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 3
       CONFLUENT_METRICS_ENABLE: "true"
 
-      KAFKA_SSL_KEYSTORE_FILENAME: 'kafka.keystore.jks'
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_KEY_CREDENTIALS: 'secret'
-      KAFKA_SSL_TRUSTSTORE_FILENAME: 'kafka.truststore.jks'
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_CLIENT_AUTH: 'none'
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: secret
+      KAFKA_SSL_KEY_PASSWORD: secret
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
+      KAFKA_SSL_CLIENT_AUTH: requested
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
 
       KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
       KAFKA_SUPER_USERS: "User:admin"
@@ -100,13 +100,13 @@ services:
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 3
       CONFLUENT_METRICS_ENABLE: "true"
 
-      KAFKA_SSL_KEYSTORE_FILENAME: 'kafka.keystore.jks'
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_KEY_CREDENTIALS: 'secret'
-      KAFKA_SSL_TRUSTSTORE_FILENAME: 'kafka.truststore.jks'
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_CLIENT_AUTH: 'none'
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: secret
+      KAFKA_SSL_KEY_PASSWORD: secret
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
+      KAFKA_SSL_CLIENT_AUTH: requested
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
 
       KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
       KAFKA_SUPER_USERS: "User:admin"
@@ -162,13 +162,13 @@ services:
       CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS: 3
       CONFLUENT_METRICS_ENABLE: "true"
 
-      KAFKA_SSL_KEYSTORE_FILENAME: 'kafka.keystore.jks'
-      KAFKA_SSL_KEYSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_KEY_CREDENTIALS: 'secret'
-      KAFKA_SSL_TRUSTSTORE_FILENAME: 'kafka.truststore.jks'
-      KAFKA_SSL_TRUSTSTORE_CREDENTIALS: 'secret'
-      KAFKA_SSL_CLIENT_AUTH: 'none'
-      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ""
+      KAFKA_SSL_KEYSTORE_LOCATION: /etc/kafka/secrets/kafka.keystore.jks
+      KAFKA_SSL_KEYSTORE_PASSWORD: secret
+      KAFKA_SSL_KEY_PASSWORD: secret
+      KAFKA_SSL_TRUSTSTORE_LOCATION: /etc/kafka/secrets/kafka.truststore.jks
+      KAFKA_SSL_TRUSTSTORE_PASSWORD: secret
+      KAFKA_SSL_CLIENT_AUTH: requested
+      KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: 
 
       KAFKA_AUTHORIZER_CLASS_NAME: org.apache.kafka.metadata.authorizer.StandardAuthorizer
       KAFKA_SUPER_USERS: "User:admin"

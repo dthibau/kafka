@@ -9,23 +9,21 @@
     },
     {
       "name": "position",
-      "type": [
-        {
-          "type":	"record",
-          "name": "Position",
-          "namespace":  "model",
-          "fields":  [
-            {
-              "name": "latitude",
-              "type":	"double"
-            },
-            {
-              "name": "longitude",
-              "type": "double"
-            }
-          ]
-        }
-      ]
+      "type": {
+        "type": "record",
+        "name": "Position",
+        "namespace": "model",
+        "fields": [
+          {
+            "name": "latitude",
+            "type": "double"
+          },
+          {
+            "name": "longitude",
+            "type": "double"
+          }
+        ]
+      }
     }
   ]
 }

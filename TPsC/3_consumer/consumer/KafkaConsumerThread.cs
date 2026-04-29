@@ -27,15 +27,16 @@ namespace KafkaConsumer
 
         }
 
-        private void InsertIntoPostgres(long key, long offset)
+        private void InsertIntoPostgres(long key, int partition, long offset)
         {
             using (var conn = new NpgsqlConnection(_connectionString))
             {
                 conn.Open();
 
-                using (var cmd = new NpgsqlCommand("INSERT INTO coursier (coursierId, kafkaOffset) VALUES (@key, @offset)", conn))
+                using (var cmd = new NpgsqlCommand("INSERT INTO coursier (coursierId, partitionId, kafkaOffset) VALUES (@key, @partition, @offset)", conn))
                 {
                     cmd.Parameters.AddWithValue("key", key);
+                    cmd.Parameters.AddWithValue("partition", partition);
                     cmd.Parameters.AddWithValue("offset", offset);
 
                     try

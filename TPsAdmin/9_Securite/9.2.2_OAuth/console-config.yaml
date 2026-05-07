@@ -1,0 +1,26 @@
+kafka:
+  brokers:
+    - localhost:9092
+    - localhost:9192
+    - localhost:9292
+  tls:
+    enabled: true
+    insecureSkipTlsVerify: true
+  sasl:
+    enabled: true
+    mechanism: OAUTHBEARER
+    impersonateUser: false
+    oauth:
+      clientId: "kafka-broker"
+      clientSecret: "broker-secret"
+      tokenEndpoint: "http://localhost:9090/realms/kafka/protocol/openid-connect/token"
+      scope: "openid"
+
+schemaRegistry:
+  enabled: true
+  urls:
+    - http://localhost:8085
+
+server:
+  listenPort: 8080
+

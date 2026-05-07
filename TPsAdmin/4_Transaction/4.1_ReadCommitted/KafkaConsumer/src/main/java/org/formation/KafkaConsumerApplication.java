@@ -16,13 +16,16 @@ public class KafkaConsumerApplication {
 
 		int nbThreads = 0;
 		boolean readCommitted=false;
+		String topic = "position-tx";
 
 		try {
 			nbThreads = Integer.parseInt(args[0]);
 
 			readCommitted = Boolean.parseBoolean(args[1]);
+
+			topic = args[2];
 		} catch (Exception e) {
-			System.err.println("Usage is <run> <nbThreads> <read-committed>");
+			System.err.println("Usage is <run> <nbThreads> <read-committed> <topic>");
 			System.exit(1);
 		}
 
@@ -33,7 +36,7 @@ public class KafkaConsumerApplication {
 		List<KafkaConsumer> consumers = new ArrayList<>();
 		
 		for (int i = 0; i < nbThreads; i++) {
-			KafkaConsumerThread r = new KafkaConsumerThread(i,readCommitted);
+			KafkaConsumerThread r = new KafkaConsumerThread(i,readCommitted,topic);
 			executorService.execute(r);
 			consumers.add(r.consumer);
 		}

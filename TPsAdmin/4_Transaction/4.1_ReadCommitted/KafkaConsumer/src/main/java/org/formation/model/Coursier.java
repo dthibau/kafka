@@ -4,6 +4,7 @@ public class Coursier {
 
 	private String id;
 	private Position currentPosition;
+	private long distance;
 	
 	public Coursier() {
 		
@@ -32,6 +33,15 @@ public class Coursier {
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	public long getDistance() {
+		return distance;
+	}
+
+	public void setDistance(long distance) {
+		this.distance = distance;
+	}
+
 	@Override
 	public String toString() {
 		return "Courier [id=" + id + ", currentPosition=" + currentPosition + "]";

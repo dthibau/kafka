@@ -1,6 +1,6 @@
 {
     "type": "record",
-    "name": "Courier",
+    "name": "Coursier",
     "namespace": "org.formation.model",
     "fields": [
     {

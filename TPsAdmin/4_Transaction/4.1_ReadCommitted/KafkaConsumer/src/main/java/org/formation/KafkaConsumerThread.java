@@ -15,15 +15,16 @@ import org.formation.model.Coursier;
 
 public class KafkaConsumerThread implements Runnable, ConsumerRebalanceListener {
 
-	public static String TOPIC = "position-tx";
+	private String topic = "position-tx";
 	KafkaConsumer<String, Coursier> consumer;
 	private int id;
 	private boolean readCommited;
 	
 
-	public KafkaConsumerThread(int id, boolean readCommitted) {
+	public KafkaConsumerThread(int id, boolean readCommitted, String topic) {
 		this.id = id;
 		this.readCommited = readCommitted;
+		this.topic = topic;
 
 		_initConsumer();
 
@@ -64,7 +65,7 @@ public class KafkaConsumerThread implements Runnable, ConsumerRebalanceListener 
 			kafkaProps.put(ConsumerConfig.ISOLATION_LEVEL_CONFIG, "read_committed");
 
 		consumer = new KafkaConsumer<String, Coursier>(kafkaProps);
-		consumer.subscribe(Collections.singletonList(TOPIC),this);
+		consumer.subscribe(Collections.singletonList(topic),this);
 	}
 
 	@Override

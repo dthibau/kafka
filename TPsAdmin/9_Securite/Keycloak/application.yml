@@ -1,0 +1,23 @@
+async: true
+spring:
+  main:
+    web-application-type: none
+  kafka:
+    bootstrap-servers: localhost:9094
+    properties:
+      security.protocol: SASL_SSL
+      sasl.mechanism: OAUTHBEARER
+      sasl.login.callback.handler.class: org.apache.kafka.common.security.oauthbearer.secured.OAuthBearerLoginCallbackHandler
+
+      # Propriétés modernes (Kafka 3.1+)
+      sasl.oauthbearer.token.endpoint.url: http://localhost:8089/realms/formation/protocol/openid-connect/token
+      sasl.oauthbearer.client.id: spring-producer
+      sasl.oauthbearer.client.secret: secret
+      sasl.oauthbearer.scope: openid
+
+      # Bloc JAAS minimal pour satisfaire Spring Kafka
+      sasl.jaas.config: org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required ;
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.formation.model.JsonSerializer
+

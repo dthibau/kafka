@@ -1,0 +1,63 @@
+
+
+services:
+  redpanda:
+    image : docker.redpanda.com/redpandadata/console:latest
+    container_name: redpanda-console
+    network_mode: "host"  # Use host network to access Kafka, listenning to 8080
+    depends_on:
+      - schema-registry
+    environment:
+      KAFKA_BROKERS: localhost:9094,localhost:9194,localhost:9294
+      KAFKA_SCHEMAREGISTRY_ENABLED: 'true'
+      KAFKA_SCHEMAREGISTRY_URLS: http://localhost:8085
+      KAFKA_TLS_ENABLED: "true"
+      KAFKA_SASL_ENABLED: "true"
+      KAFKA_SASL_MECHANISM: "PLAIN"
+      KAFKA_SASL_USERNAME: "admin"
+      KAFKA_SASL_PASSWORD: "admin-secret"
+      KAFKA_TLS_TRUSTSTORE_PATH: "/ssl/truststore/kafka.truststore.jks"
+      KAFKA_TLS_TRUSTSTORE_PASSWORD: "secret"
+#      KAFKA_TLS_KEYSTORE_PATH: "/etc/tls/kafka.keystore.jks"
+#      KAFKA_TLS_KEYSTORE_PASSWORD: "changeit"
+    volumes:
+      - /home/dthibau/Formations/Kafka/github/kafka-admin-solutions/ssl:/ssl
+
+  akhq:
+    image: tchiotludo/akhq
+    container_name: akhq
+    network_mode: "host"  # Use host network to access Kafka, listenning to 8081
+    depends_on:
+      - schema-registry
+    command: |
+      java -Xmx512m -Xms512m 
+           -Dfile.encoding=UTF-8 -Djava.awt.headless=true 
+           -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp/heapdump.log 
+           -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=8686 -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false 
+           -jar /app/akhq.jar
+    environment:
+      AKHQ_CONFIGURATION: |
+        micronaut:
+          server:
+            port: 8081
+        akhq:
+          connections:
+            docker-kafka-server:
+              properties:
+                bootstrap.servers: "localhost:9092,localhost:9192,localhost:9292"
+              schema-registry:
+                url: "http://localhost:8085"
+                
+  schema-registry:
+    image: confluentinc/cp-schema-registry
+    container_name: schema-registry
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://localhost:9092,PLAINTEXT://localhost:9192'
+      SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
+      SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
+      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+    
+
+

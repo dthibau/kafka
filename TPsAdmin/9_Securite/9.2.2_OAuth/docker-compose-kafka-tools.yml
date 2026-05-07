@@ -1,0 +1,62 @@
+# ── Atelier 9.2.2 — Kafka + OAuth/OAUTHBEARER avec Keycloak ──────────────────
+#
+#
+# Redpanda Console sur port 8080
+# Schema Registry sur port 8085
+# ──────────────────────────────────────────────────────────────────────────────
+
+services:
+
+# ── Redpanda Console ─────────────────────────────────────────────────────────
+
+  redpanda-console:
+    image: redpandadata/console:v3.5.3
+    container_name: redpanda-console
+    network_mode: host
+    restart: unless-stopped
+    volumes:
+      - ./console-config.yaml:/etc/console/config.yaml
+      - ./ssl:/ssl
+    environment:
+      - CONFIG_FILEPATH=/etc/console/config.yaml
+
+
+  schema-registry:
+    image: confluentinc/cp-schema-registry:8.2.0
+    container_name: schema-registry
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
+      SCHEMA_REGISTRY_LISTENERS: 'http://0.0.0.0:8085'
+      SCHEMA_REGISTRY_LOG4J_ROOT_LOGLEVEL: 'INFO'
+
+      # ── Connexion au cluster Kafka via le listener BROKER (SASL_SSL/OAUTHBEARER)
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'SASL_SSL://localhost:9092,SASL_SSL://localhost:9192,SASL_SSL://localhost:9292'
+      SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: 'SASL_SSL'
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_MECHANISM: 'OAUTHBEARER'
+
+      # truststore pour le certificat auto-signé de Keycloak 
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_LOCATION: '/ssl/mount/kafka.truststore.jks'
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_TRUSTSTORE_PASSWORD: 'secret'
+      SCHEMA_REGISTRY_KAFKASTORE_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: ''
+    # ── JAAS : module OAuthBearer + credentials du client OAuth
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_JAAS_CONFIG: 'org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginModule required clientId="kafka-broker" clientSecret="broker-secret" scope="openid";'
+
+      # ── Callback handler côté client (récupère le token via le token endpoint)
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_LOGIN_CALLBACK_HANDLER_CLASS: 'org.apache.kafka.common.security.oauthbearer.OAuthBearerLoginCallbackHandler'
+
+      # ── Endpoint Keycloak pour obtenir le token
+      SCHEMA_REGISTRY_KAFKASTORE_SASL_OAUTHBEARER_TOKEN_ENDPOINT_URL: 'http://localhost:9090/realms/kafka/protocol/openid-connect/token'
+
+      JAVA_TOOL_OPTIONS: '-Dorg.apache.kafka.sasl.oauthbearer.allowed.urls=http://localhost:9090/realms/kafka/protocol/openid-connect/token'
+    volumes:
+      - ./ssl:/ssl
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8085"]
+      interval: 15s
+      timeout: 5s
+      start_period: 15s
+      retries: 4
+

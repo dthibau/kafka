@@ -2,7 +2,7 @@
 
 services:
   redpanda:
-    image : docker.redpanda.com/redpandadata/console:latest
+    image : docker.redpanda.com/redpandadata/console:v3.2.1
     container_name: redpanda-console
     network_mode: "host"  # Use host network to access Kafka, listenning to 8080
     depends_on:

@@ -1,0 +1,36 @@
+services:
+  kafka-b:
+    image: apache/kafka:4.2.0
+    container_name: kafka-b
+    restart: unless-stopped
+    network_mode: "host" 
+    environment:
+      KAFKA_NODE_ID: 10
+      KAFKA_PROCESS_ROLES: broker,controller
+      KAFKA_CLUSTER_ID: "Bk3OEYBSD34fcwNTJENDM2Qk"
+
+      KAFKA_LISTENERS: BROKER://0.0.0.0:29092,CONTROLLER://0.0.0.0:29093,EXTERNAL://0.0.0.0:39092
+      KAFKA_ADVERTISED_LISTENERS: BROKER://localhost:29092,EXTERNAL://localhost:39092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: BROKER:PLAINTEXT,CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: BROKER
+      KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
+
+      KAFKA_CONTROLLER_QUORUM_VOTERS: "10@localhost:29093"
+
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_DEFAULT_REPLICATION_FACTOR: 1
+      KAFKA_MIN_INSYNC_REPLICAS: 1
+      KAFKA_NUM_PARTITIONS: 3
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+
+      KAFKA_LOG_DIRS: /var/lib/kafka/data
+    volumes:
+      - kafka-b-data:/var/lib/kafka/data
+
+volumes:
+  kafka-b-data:
+    name: kafka-b-data
+    driver: local
+

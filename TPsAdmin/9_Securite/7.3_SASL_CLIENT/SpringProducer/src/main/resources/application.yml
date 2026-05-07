@@ -1,0 +1,24 @@
+async: true
+spring:
+  main:
+    web-application-type: none
+  kafka:
+    producer:
+      bootstrap-servers:
+      - localhost:9094
+      - localhost:9194
+      - localhost:9294
+      key-serializer:
+        org.apache.kafka.common.serialization.StringSerializer
+      value-serializer:
+        org.formation.model.JsonSerializer
+      security:
+        protocol: SASL_SSL
+      ssl:
+        trust-store-location: file:///home/dthibau/Formations/Kafka/github/kafka-admin-solutions/ssl/truststore/kafka.truststore.jks
+        trust-store-password: secret
+      properties:
+        sasl:
+          mechanism: PLAIN
+          jaas:
+            config: org.apache.kafka.common.security.plain.PlainLoginModule required username="alice" password="alice-secret";

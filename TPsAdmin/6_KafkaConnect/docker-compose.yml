@@ -2,7 +2,7 @@
 
 services:
   redpanda:
-    image : docker.redpanda.com/redpandadata/console:latest
+    image : docker.redpanda.com/redpandadata/console:v3.2.1
     container_name: redpanda-console
     network_mode: "host"  # Use host network to access Kafka, listenning to 8080
     depends_on:
@@ -57,25 +57,26 @@ services:
       - CONNECT_GROUP_ID=formation
       - CONNECT_CONFIG_STORAGE_TOPIC=__formation-config
       - CONNECT_OFFSET_STORAGE_TOPIC=__formation-offsets
-      - CONNECT_STATUS_STORAGE_TOPIC=__fonction-status
+      - CONNECT_STATUS_STORAGE_TOPIC=__formation-status
       - CONNECT_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - CONNECT_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - CONNECT_INTERNAL_KEY_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - CONNECT_INTERNAL_VALUE_CONVERTER=org.apache.kafka.connect.json.JsonConverter
       - CONNECT_REST_ADVERTISED_HOST_NAME=localhost
       - CONNECT_PLUGIN_PATH=/usr/share/java,/usr/share/confluent-hub-components
-      #- CONNECT_KEY_CONVERTER_SCHEMAS_ENABLE=false
-      #- CONNECT_VALUE_CONVERTER_SCHEMAS_ENABLE=false 
+
+      # Nécessaire pour MirrorMaker2, sinon on a une erreur de type "org.apache.kafka.connect.errors.ConnectException: Failed to deserialize data for topic __consumer_offsets to Avro format"
+      - CONNECT_CONNECTOR_CLIENT_CONFIG_OVERRIDE_POLICY=All
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.7.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.0
     network_mode: host
     container_name: elasticsearch
     environment:
       - "discovery.type=single-node"
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.7.1
+    image: docker.elastic.co/kibana/kibana:8.13.0
     container_name: kibana
     network_mode: host
     restart: on-failure

@@ -1,0 +1,55 @@
+10.4 Bascule et reprise depuis le cluster B
+Objectifs
+    • Simuler une indisponibilité du cluster A
+    • Faire reprendre un consumer côté B sans rejouer toute l'historique
+    • Mesurer le RPO observé et constater les limites
+10.4.1. Préparer un consumer group côté A 
+Côté A, lancer un consumer dans un groupe nommé position-app qui consomme une partie des messages puis s'arrête :
+docker exec -it kafka-0 /opt/kafka/bin/kafka-console-consumer.sh \
+  --bootstrap-server kafka-0:9092 --topic position \
+  --group position-app --from-beginning --max-messages 10
+Vérifier l'offset committé :
+docker exec -it kafka-0 /opt/kafka/bin/kafka-consumer-groups.sh \
+  --bootstrap-server kafka-0:9092 --describe --group position-app
+Attendre ~10 secondes que le MirrorCheckpointConnector propage les offsets vers B (intervalle configuré à 5s en 7.4).
+10.4.2. Inspecter les checkpoints côté B 
+Le connecteur Checkpoint écrit dans un topic dédié côté B. Le visualiser :
+docker exec -it kafka-b /opt/kafka/bin/kafka-console-consumer.sh \
+  --bootstrap-server kafka-b:9092 \
+  --topic A.checkpoints.internal --from-beginning \
+  --formatter org.apache.kafka.connect.mirror.formatters.CheckpointFormatter
+On y voit pour chaque partition : l'offset upstream (côté A) et l'offset downstream traduit (côté B). C'est la base de la reprise.
+10.4.3. Simuler la panne de A 
+docker stop kafka-0 kafka-1 kafka-2
+Le cluster A est injoignable. MirrorMaker s'arrête de répliquer (visible dans les logs Connect), mais B contient déjà les données.
+10.4.4. Faire reprendre le consumer côté B
+MirrorMaker 2 ne pousse pas automatiquement les offsets dans __consumer_offsets côté B — il faut les appliquer au groupe avant de redémarrer le consumer. L'outil RemoteClusterUtils est exposé via la classe utilitaire kafka-mirror-checkpoint.sh (Kafka 3.5+). Sur des versions antérieures, on passe par un petit script Java/Python ou par kafka-consumer-groups.sh --reset-offsets --to-offset en lisant manuellement le topic checkpoints.
+Variante simple pour l'atelier — application manuelle :
+# Lire le dernier checkpoint pour position-app
+# (offset downstream côté B pour chaque partition)
+ 
+# Appliquer cet offset au groupe côté B
+docker exec -it kafka-b /opt/kafka/bin/kafka-consumer-groups.sh \
+  --bootstrap-server kafka-b:9092 \
+  --group position-app --topic A.position \
+  --reset-offsets --to-offset <OFFSET_DOWNSTREAM> --execute
+Puis relancer le consumer côté B :
+docker exec -it kafka-b /opt/kafka/bin/kafka-console-consumer.sh \
+  --bootstrap-server kafka-b:9092 --topic A.position \
+  --group position-app
+Constat clé : il reprend à la suite de ce qu'il avait déjà traité côté A, pas depuis le début.
+10.4.5. Mesurer le RPO
+Comparer :
+    • Le dernier offset produit côté A avant l'arrêt (visible dans les logs ou via kafka-run-class kafka.tools.GetOffsetShell avant docker stop)
+    • Le dernier offset présent côté B sur A.position
+L'écart = RPO observé (messages perdus si A est définitivement perdu).
+Discussion à animer :
+    • Pourquoi cet écart existe-t-il ?  →  réplication asynchrone
+    • Pourquoi l'offset traduit n'est-il pas exact au message près ?  →  la traduction se fait par échantillonnage périodique via mm2-offset-syncs
+    • Comment réduire le RPO ?  →  diminuer emit.checkpoints.interval.seconds, augmenter tasks.max, mais aucun moyen d'atteindre RPO=0 avec MM2
+10.4.6. Failback 
+Redémarrer A (docker start kafka-0 kafka-1 kafka-2) et discuter :
+    • Faut-il rebasculer ? Quand ?
+    • Comment éviter la double-écriture pendant la transition ?
+    • Intérêt d'une réplication bidirectionnelle A↔B (et son piège : éviter les boucles avec IdentityReplicationPolicy ou les tags d'origine).
+

@@ -39,7 +39,7 @@ public class KafkaProducerThread implements Runnable {
 			courier.move();
 
 		}
-		
+		this.template.flush();
 	}
 	
 	

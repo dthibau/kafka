@@ -8,6 +8,7 @@ services:
       - ./prometheus/:/etc/prometheus/
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--web.listen-address=:9095'
   grafana:
     image: grafana/grafana
     container_name: grafana-kafka

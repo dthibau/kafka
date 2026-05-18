@@ -73,7 +73,10 @@ services:
     network_mode: host
     container_name: elasticsearch
     environment:
-      - "discovery.type=single-node"
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.13.0

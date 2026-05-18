@@ -12,3 +12,5 @@ spring:
         org.apache.kafka.common.serialization.StringSerializer
       value-serializer:
         org.formation.model.JsonSerializer
+      batch-size: 32000
+
